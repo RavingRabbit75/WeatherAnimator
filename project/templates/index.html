@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="mainContainer" class="zeroMargin">
+	<div id="canvasContainer" class="background">
+		
+	</div>
+	<div class="container-fluid">
+		<div id="search_public" class="col-xs-11">
+			<h2>Enter location to see weather.</h2>
+			<form id="searchForm">
+				<div class="form-group">
+					<label for="inputCity">Search for City</label>
+					<input type="text" class="form-control" id="inputCity" placeholder="City">
+				</div>
+				<button type="submit" id="submitBtn" class="btn btn-default pull-right">Submit</button>
+			</form>
+		</div>
+	</div>
+	
+</div>
+
+
+<script src="{{url_for('static', filename='js/app.js')}}"></script>
+{% endblock %}
+

@@ -1,0 +1,14 @@
+.zeroMargin {
+	margin: 0px;
+	padding: 0px;
+}
+
+#canvasContainer {
+	/*position: absolute;*/
+}
+
+
+#search_public {
+	position: absolute;
+	top: 300px;
+}
