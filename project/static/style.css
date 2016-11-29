@@ -8,7 +8,18 @@
 }
 
 
+.topButtons {
+	position: absolute;
+	top: 10px;
+}
+
+.btnMargin {
+	margin-right: 10px;
+}
+
+
 #search_public {
 	position: absolute;
 	top: 300px;
 }
+

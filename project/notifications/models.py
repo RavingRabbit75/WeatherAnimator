@@ -4,7 +4,7 @@ from datetime import datetime
 class Notification(db.Model):
 	__tablename__ = "notifications"
 
-	id.db.Column(db.Integer, primary_key=True)
+	id=db.Column(db.Integer, primary_key=True)
 	weather_type=db.Column(db.Text)
 	user_id=db.Column(db.Integer, db.ForeignKey("users.id"))
 
