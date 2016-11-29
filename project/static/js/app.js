@@ -44,23 +44,23 @@ onload=function(){
 			    uvs: true,
 			    alpha: true
 			});
-			var that=this;
+
 			var count=0;
 			var timer = setInterval(function() {
 				if(count<amount){
 					var graphics=new PIXI.Sprite(PIXI.loader.resources["static/images/snow_flake_01.png"].texture);
-					graphics.position.x = that.getRandomInt(0,2000);
+					graphics.position.x = this.getRandomInt(0,2000);
 					graphics.position.y = -10;
 					graphics.scale.set(Math.random()+0.5);
-					var tween = TweenMax.to(graphics.position, that.getRandomInt(5,8), {y:700, repeat:-1, repeatDelay:0.5, ease:Linear.easeNone, onRepeat:that.randomX});
-					var randomWave = "+="+(that.getRandomInt(10,25)).toString();
-					var tween2 = TweenMax.to(graphics.position, that.getRandomInt(1,3), {x:randomWave, repeat:-1, repeatDelay:0.1, yoyo:true, ease:Linear.easeNone});
+					var tween = TweenMax.to(graphics.position, this.getRandomInt(5,8), {y:700, repeat:-1, repeatDelay:0.5, ease:Linear.easeNone, onRepeat:this.randomX});
+					var randomWave = "+="+(this.getRandomInt(10,25)).toString();
+					var tween2 = TweenMax.to(graphics.position, this.getRandomInt(1,3), {x:randomWave, repeat:-1, repeatDelay:0.1, yoyo:true, ease:Linear.easeNone});
 					emitter.addChild(graphics);
 					count++;
 				} else {
 					clearInterval(timer);
 				}
-			}, 100);
+			}.bind(this), 100);
 
 			stage.addChild(emitter);
 
@@ -85,28 +85,28 @@ onload=function(){
 	class RainEmitter {
 		constructor(amount){
 			this.amount=amount;
-			var emitter = new PIXI.particles.ParticleContainer(300, {
+			var emitter = new PIXI.particles.ParticleContainer(1000, {
 			    scale: true,
 			    position: true,
 			    rotation: true,
 			    uvs: true,
 			    alpha: true
 			});
-			var that=this;
+
 			var count=0;
 			var timer = setInterval(function() {
 				if(count<amount){
 					var graphics=new PIXI.Sprite(PIXI.loader.resources["static/images/rain_drop_02.png"].texture);
-					graphics.position.x = that.getRandomInt(0,1000);
+					graphics.position.x = this.getRandomInt(0,2000);
 					graphics.position.y = -10;
-					graphics.scale.set(that.getRandomFloat(0.5, 1));
-					var tween = TweenMax.to(graphics.position, that.getRandomFloat(0.5, 1), {y:700, repeat:-1, repeatDelay:0.5, ease:Linear.easeNone});
+					graphics.scale.set(this.getRandomFloat(0.5, 1));
+					var tween = TweenMax.to(graphics.position, this.getRandomFloat(0.5, 1), {y:700, repeat:-1, repeatDelay:0.5, ease:Linear.easeNone});
 					emitter.addChild(graphics);
 					count++;
 				} else {
 					clearInterval(timer);
 				}
-			}, 100);
+			}.bind(this), 10);
 
 			stage.addChild(emitter);
 

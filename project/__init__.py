@@ -20,13 +20,13 @@ if os.environ.get("ENV") == "production":
 else:
 	debug=True
 	app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
-	app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://localhost/twitter-clone'
+	app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://localhost/weather_animator'
 
 
-# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-# db=SQLAlchemy(app)
-# modus=Modus(app)
-# CsrfProtect(app)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db=SQLAlchemy(app)
+modus=Modus(app)
+CsrfProtect(app)
 
 # login_manager.login_view = "users.login"
 
