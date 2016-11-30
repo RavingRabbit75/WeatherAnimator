@@ -1,5 +1,7 @@
 from project import db
 from datetime import datetime
+import requests
+from project import app
 
 class Location(db.Model):
 	__name__ = "locations"
@@ -16,4 +18,11 @@ class Location(db.Model):
 
 	def __repr__(self):
 		return "Location: {} was last updated {}.".format(self.location, self.last_updated)
+
+
+	def get_data(city):
+		searchText = city
+		r = requests.get("http://api.openweathermap.org/data/2.5/weather?q="+searchText+"&APPID="+app.config['APP_KEY'])
+		return r.json()
+
 

@@ -18,10 +18,12 @@ if os.environ.get("ENV") == "production":
 	debug=False
 	app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
 	app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL')
+
 else:
 	debug=True
 	app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 	app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://localhost/weather_animator'
+	app.config['APP_KEY'] = os.environ.get('APP_KEY')
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -44,7 +46,9 @@ app.register_blueprint(locations_blueprint, url_prefix="/users/<int:id>/location
 
 @app.route("/")
 def root():
-	return render_template("index.html")
+	weather_data = Location.get_data("Denver")
+	print(weather_data.)
+	return render_template("index.html", data=weather_data)
 
 
 @app.errorhandler(404)
