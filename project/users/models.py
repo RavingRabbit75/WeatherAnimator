@@ -9,6 +9,7 @@ class User(db.Model, UserMixin):
 	password=db.Column(db.Text)
 	first_name=db.Column(db.Text)
 	last_name=db.Column(db.Text)
+	locations=db.relationship("Location", backref="user", lazy="dynamic")
 
 	def __init__(self, email, password, first_name, last_name):
 		self.email = email

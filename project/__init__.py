@@ -30,14 +30,17 @@ modus=Modus(app)
 CsrfProtect(app)
 
 login_manager.login_view = "users.login"
-from project.users.views import users_blueprint
+
 
 from project.users.models import User
 from project.locations.models import Location
 from project.notifications.models import Notification
+from project.users.views import users_blueprint
+from project.locations.views import locations_blueprint
 
 
-# app.register_blueprint(users_blueprint, url_prefix='/users')
+app.register_blueprint(users_blueprint, url_prefix="/users")
+app.register_blueprint(locations_blueprint, url_prefix="/users/<int:id>/locations")
 
 @app.route("/")
 def root():
@@ -47,4 +50,9 @@ def root():
 @app.errorhandler(404)
 def page_not_found(e):
 	return render_template("404.html"), 404
+
+
+@login_manager.user_loader
+def load_user(user_id):
+	return User.query.get(user_id)
 

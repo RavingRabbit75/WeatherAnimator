@@ -149,7 +149,7 @@ onload=function(){
 		stage.addChild(sky01);
 		stage.addChild(mountain01);
 		stage.addChild(hill02);
-		var emitter=new SnowEmitter(150, color_white);
+		// var emitter=new SnowEmitter(150, color_white);
 		// var emitter=new RainEmitter(150);
 		stage.addChild(hill01);
 		

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Weather Locations</h1>
+	<div class="view-box">
+		<div class="col-xs-6">
+			<div class="full-name">{{user.first_name+" "+user.last_name}}</div>
+			<div class="sub-info">
+				{{"Email: "+user.email}}
+			</div>
+		</div>
+		<div class="col-xs-6 view-btn2">
+			<a href="/users/{{user.id}}/locations">
+				<button class="btn btn-default">Locations</button>
+			</a>
+			<a href="/users/{{user.id}}/edit">
+				<button class="btn btn-default">Edit</button>
+			</a>
+			<form id="deleteBtnForm" action="/users/{{user.id}}?_method=DELETE" method="POST">
+				<button type="submit" class="btn btn-default">Delete</button>
+			</form>
+		</div>
+	</div>
+
+
+{% endblock %}
