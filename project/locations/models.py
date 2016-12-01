@@ -4,16 +4,16 @@ import requests
 from project import app
 
 class Location(db.Model):
-	__name__ = "locations"
+	__tablename__ = "locations"
 
 	id=db.Column(db.Integer, primary_key=True)
-	location=db.Column(db.Text)
+	location=db.Column(db.Text, unique=True)
 	last_updated=db.Column(db.DateTime, default=datetime.utcnow)
 	user_id=db.Column(db.Integer, db.ForeignKey("users.id"))
 
 	def __init__(self, location, user_id):
 		self.location = location
-		self.user_id
+		self.user_id = user_id
 
 
 	def __repr__(self):
@@ -38,5 +38,5 @@ class Location(db.Model):
 
 
 	def get_icon_type(icon_value):
-		path = "static/images/weather_icons/"
+		path = "/static/images/weather_icons/"
 		return path+icon_value+".png"

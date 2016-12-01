@@ -1,17 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h1>Log In</h1>
-	<form class="navbar-form navbar-left" action="{{url_for('users.login')}}" method="POST">
-		{{ form.csrf_token }}
-		<div class="form-group">
-			{{ form.email(class="form-control", placeholder="Enter Email") }}
-			{{ form.password(class="form-control", placeholder="Enter Password") }}
-		</div>
-		<button type="submit" class="btn btn-default">Log In</button>
-		<div class="form-group">
-			{{ error }}
-		</div>
-	</form>
+<div id="mainContainer" class="zeroMargin">
+	<div id="canvasContainer" class="background">
+		
+	</div>
+	<div class="container-fluid z-index-300">
+		<h1>Log In</h1>
+		<form class="navbar-form navbar-left" action="{{url_for('users.login')}}" method="POST">
+			{{ form.csrf_token }}
+			<div class="form-group">
+				{{ form.email(class="form-control", placeholder="Enter Email") }}
+				{{ form.password(class="form-control", placeholder="Enter Password") }}
+			</div>
+			<button type="submit" class="btn btn-default">Log In</button>
+			<div class="form-group">
+				{{ error }}
+			</div>
+		</form>
+	</div>
+</div>
 
+<script src="{{url_for('static', filename='js/app.js')}}"></script>
 {% endblock %}

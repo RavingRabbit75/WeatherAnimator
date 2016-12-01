@@ -60,13 +60,13 @@ def public():
 		current_temp=str(Location.kelvin_to_fahrenheit(weather_data["main"]["temp"]))+"°F"
 		current_condition=weather_data["weather"][0]["description"]
 		icon_bitmap= Location.get_icon_type(weather_data["weather"][0]["icon"])
-		return render_template("index.html", location=location,
-											 current_temp=current_temp,
-											 current_condition=current_condition,
-											 icon_bitmap=icon_bitmap)
+		return render_template("index_weather.html", location=location,
+											 		 current_temp=current_temp,
+											 		 current_condition=current_condition,
+											 		 icon_bitmap=icon_bitmap)
 
 	if request.method=="GET":
-		return render_template("index.html")
+		return render_template("index_weather.html")
 
 
 @app.errorhandler(404)

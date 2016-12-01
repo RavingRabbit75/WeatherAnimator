@@ -25,6 +25,17 @@
 		</div>
 	</div>
 
+	<div class="container-fluid weather-stats">
+		<div class="col-xs-11">
+			<h3>Location: {{location}}</h3>
+			<div class="divider-line"></div>
+			<div id="box">
+				{% include 'public_weather_stats.html' %}
+			</div>
+			<div class="divider-line"></div>
+		</div>
+	</div>
+
 </div>
 
 <script src="{{url_for('static', filename='js/app.js')}}"></script>

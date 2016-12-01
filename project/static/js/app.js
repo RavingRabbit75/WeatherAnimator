@@ -48,7 +48,7 @@ onload=function(){
 			var count=0;
 			var timer = setInterval(function() {
 				if(count<amount){
-					var graphics=new PIXI.Sprite(PIXI.loader.resources["static/images/snow_flake_01.png"].texture);
+					var graphics=new PIXI.Sprite(PIXI.loader.resources["/static/images/snow_flake_01.png"].texture);
 					graphics.position.x = this.getRandomInt(0,2000);
 					graphics.position.y = -10;
 					graphics.scale.set(Math.random()+0.5);
@@ -96,7 +96,7 @@ onload=function(){
 			var count=0;
 			var timer = setInterval(function() {
 				if(count<amount){
-					var graphics=new PIXI.Sprite(PIXI.loader.resources["static/images/rain_drop_02.png"].texture);
+					var graphics=new PIXI.Sprite(PIXI.loader.resources["/static/images/rain_drop_02.png"].texture);
 					graphics.position.x = this.getRandomInt(0,2000);
 					graphics.position.y = -10;
 					graphics.scale.set(this.getRandomFloat(0.5, 1));
@@ -127,12 +127,12 @@ onload=function(){
 
 	function loadBitmaps(){
 		PIXI.loader
-		.add("static/images/hill_01.png")
-		.add("static/images/hill_02.png")
-		.add("static/images/mountain_01.png")
-		.add("static/images/sky_01.png")
-		.add("static/images/snow_flake_01.png")
-		.add("static/images/rain_drop_02.png")
+		.add("/static/images/hill_01.png")
+		.add("/static/images/hill_02.png")
+		.add("/static/images/mountain_01.png")
+		.add("/static/images/sky_01.png")
+		.add("/static/images/snow_flake_01.png")
+		.add("/static/images/rain_drop_02.png")
 		.load(setup);
 	}
 
@@ -140,10 +140,10 @@ onload=function(){
 		var color_red = 0xe74c3c;
 		var color_white = 0xffffff;
 
-		var hill01=new PIXI.Sprite(PIXI.loader.resources["static/images/hill_01.png"].texture);
-		var hill02=new PIXI.Sprite(PIXI.loader.resources["static/images/hill_02.png"].texture);
-		var mountain01=new PIXI.Sprite(PIXI.loader.resources["static/images/mountain_01.png"].texture);
-		var sky01=new PIXI.Sprite(PIXI.loader.resources["static/images/sky_01.png"].texture);
+		var hill01=new PIXI.Sprite(PIXI.loader.resources["/static/images/hill_01.png"].texture);
+		var hill02=new PIXI.Sprite(PIXI.loader.resources["/static/images/hill_02.png"].texture);
+		var mountain01=new PIXI.Sprite(PIXI.loader.resources["/static/images/mountain_01.png"].texture);
+		var sky01=new PIXI.Sprite(PIXI.loader.resources["/static/images/sky_01.png"].texture);
 		sky01.alpha = 1;
 		// sky01.tint = 0x555555;
 		stage.addChild(sky01);

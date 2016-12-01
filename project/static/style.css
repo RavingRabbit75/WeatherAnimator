@@ -11,7 +11,9 @@
 .topButtons {
 	position: absolute;
 	top: 10px;
+	right: 15px;
 }
+
 
 .btnMargin {
 	margin-right: 10px;
@@ -22,6 +24,42 @@
 	position: absolute;
 	top: 300px;
 }
+
+
+.view-box{
+	position: relative;
+	top:20px;
+	/*border-bottom: 1px solid #CCCCCC;*/
+	height: 50px;
+}
+
+
+/* this gets rid of a faint line that bootstrap causes*/
+.navbar-form, .navbar-left {
+	-webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow: none;
+    box-shadow: none;
+}
+
+.z-index-300{
+	position: relative;
+	z-index: 300
+}
+
+
+.flush-right {
+	text-align: right;
+}
+
+.down-250px{
+	position: relative;
+	top: 250px;
+}
+
+.down-100px{
+	position: relative;
+	top: 100px;
 
 
 /* weather_stats.html------------------ */
@@ -35,8 +73,22 @@
 	margin-bottom: 20px
 }
 
+
+.top-divider-line{
+	border-bottom: 1px solid #FFFFFF;
+	margin-bottom: 15px;
+}
+
 .divider-line{
 	border-bottom: 1px solid #FFFFFF;
+}
+
+.user-box{
+	margin-bottom: 15px
+}
+.info-box {
+	border-bottom: 1px solid #FFFFFF;
+	height:60px;
 }
 
 .public_temp {
@@ -53,7 +105,7 @@
 }
 
 .border {
-	/*border: 1px solid red;*/
+	border: 1px solid red;
 }
 
 .center {
@@ -66,5 +118,37 @@
 }
 
 
+
+/*Single view location------------------*/
+
+
+#icon_large {
+	position: relative;
+	width: 180px;
+	height: 180px;
+	top: 80px;
+	/*border:1px solid red;*/
+}
+
+#view_locationTemp {
+	color: #FFFFFF;
+	position: relative;
+	top: 60px;
+	font-size: 60px;
+}
+
+#view_locationName {
+	color: #FFFFFF;
+	position: relative;
+	top: 40px;
+	font-size: 25px;
+}
+
+
+
+#weatherDetails{
+	position: relative;
+	top: 60px;
+}
 
 
