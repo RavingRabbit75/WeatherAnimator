@@ -20,9 +20,23 @@ class Location(db.Model):
 		return "Location: {} was last updated {}.".format(self.location, self.last_updated)
 
 
-	def get_data(city):
+	def get_current_weather(city):
 		searchText = city
 		r = requests.get("http://api.openweathermap.org/data/2.5/weather?q="+searchText+"&APPID="+app.config['APP_KEY'])
 		return r.json()
 
 
+	def get_5day_forecast(city):
+		searchText = city
+		r = requests.get("http://api.openweathermap.org/data/2.5/forecast?q="+searchText+"&APPID="+app.config['APP_KEY'])
+		return r.json()
+		
+
+	def kelvin_to_fahrenheit(temp_in_K):
+		temp_in_F = (9/5)*(temp_in_K-273)+32
+		return round(temp_in_F)
+
+
+	def get_icon_type(icon_value):
+		path = "static/images/weather_icons/"
+		return path+icon_value+".png"

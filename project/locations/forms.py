@@ -9,3 +9,6 @@ class EditLocation(FlaskForm):
 	location = StringField("Location", [validators.Length(min=1, max=100)])
 
 
+class SearchLocationPublic(FlaskForm):
+	location = StringField("Location", [validators.DataRequired(),
+										validators.Length(min=1, max=50)])

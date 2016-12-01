@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request
 from flask_modus import Modus
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
@@ -39,16 +39,34 @@ from project.locations.models import Location
 from project.notifications.models import Notification
 from project.users.views import users_blueprint
 from project.locations.views import locations_blueprint
+from project.locations.forms import SearchLocationPublic
 
 
 app.register_blueprint(users_blueprint, url_prefix="/users")
 app.register_blueprint(locations_blueprint, url_prefix="/users/<int:id>/locations")
 
+
 @app.route("/")
 def root():
-	weather_data = Location.get_data("Denver")
-	print(weather_data.)
-	return render_template("index.html", data=weather_data)
+	form = SearchLocationPublic()
+	return render_template("index.html", form=form)
+
+
+@app.route("/public")
+def public():
+	if request.method=="GET":
+		weather_data = Location.get_current_weather(request.args.get("location"))
+		location=weather_data["name"]
+		current_temp=str(Location.kelvin_to_fahrenheit(weather_data["main"]["temp"]))+"°F"
+		current_condition=weather_data["weather"][0]["description"]
+		icon_bitmap= Location.get_icon_type(weather_data["weather"][0]["icon"])
+		return render_template("index.html", location=location,
+											 current_temp=current_temp,
+											 current_condition=current_condition,
+											 icon_bitmap=icon_bitmap)
+
+	if request.method=="GET":
+		return render_template("index.html")
 
 
 @app.errorhandler(404)
@@ -59,4 +77,14 @@ def page_not_found(e):
 @login_manager.user_loader
 def load_user(user_id):
 	return User.query.get(user_id)
+
+
+
+
+
+
+
+
+
+
 

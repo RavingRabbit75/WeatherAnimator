@@ -16,23 +16,26 @@
 		</div>
 		<div id="search_public" class="col-xs-11">
 			<h2>Enter location to see weather.</h2>
-			<form id="searchForm">
+			<form id="searchForm" action="{{url_for('public')}}" method="GET">
 				<div class="form-group">
-					<label for="inputCity">Search for City</label>
-					<input type="text" class="form-control" id="inputCity" placeholder="City">
+					<input type="text" class="form-control" name="location" placeholder="Enter City">
 				</div>
 				<button type="submit" id="submitBtn" class="btn btn-default pull-right">Submit</button>
 			</form>
-			
-
 		</div>
 	</div>
 
-	<div class="container-fluid">
-		{% include 'weather_stats.html' %}
+	<div class="container-fluid weather-stats">
+		<div class="col-xs-11">
+			<h3>Location: {{location}}</h3>
+			<div class="divider-line"></div>
+			<div id="box">
+				{% include 'public_weather_stats.html' %}
+			</div>
+			<div class="divider-line"></div>
+		</div>
 	</div>
-	
-	
+
 </div>
 
 <script src="{{url_for('static', filename='js/app.js')}}"></script>
