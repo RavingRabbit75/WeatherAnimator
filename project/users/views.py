@@ -63,7 +63,8 @@ def show(id):
 		return render_template("404.html"), 404
 
 	if request.method=="GET":
-		return render_template("users/show.html", user=found_user)
+		return redirect(url_for("locations.index", id=found_user.id))
+		# return render_template("users/show.html", user=found_user)
 
 	if request.method==b"PATCH" and form.validate():
 		found_user.email=request.form["email"]
@@ -113,7 +114,7 @@ def signup():
 				error_found="Email alreadyin use."
 				return render_template("users/signup.html", form=form, error=error_found)
 
-			return redirect(url_for("users.show", id=new_user.id))
+			return redirect(url_for("locations.index", id=new_user.id))
 
 		return render_template("users/signup.html", form=form)
 
@@ -129,7 +130,7 @@ def login():
             authenticated_user = bcrypt.check_password_hash(found_user.password, request.form['password'])
             if authenticated_user:
                 login_user(found_user)
-                return redirect(url_for("users.show", id=found_user.id))
+                return redirect(url_for("locations.index", id=found_user.id))
             else:
                 error_found="Incorrect Password"
                 return render_template("users/login.html", form=form, error=error_found)

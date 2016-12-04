@@ -17,13 +17,16 @@ login_manager.init_app(app)
 if os.environ.get("ENV") == "production":
 	debug=False
 	app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY")
+	app.config['APP_KEY'] = os.environ.get('APP_KEY')
+	app.config['GOOGLETIMEZONE_KEY'] = os.environ.get('GOOGLETIMEZONE_KEY')
 	app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get('DATABASE_URL')
 
 else:
 	debug=True
 	app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
-	app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://localhost/weather_animator'
 	app.config['APP_KEY'] = os.environ.get('APP_KEY')
+	app.config['GOOGLETIMEZONE_KEY'] = os.environ.get('GOOGLETIMEZONE_KEY')
+	app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://localhost/weather_animator'
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -60,10 +63,15 @@ def public():
 		current_temp=str(Location.kelvin_to_fahrenheit(weather_data["main"]["temp"]))+"°F"
 		current_condition=weather_data["weather"][0]["description"]
 		icon_bitmap= Location.get_icon_type(weather_data["weather"][0]["icon"])
+
+		tz_id=Location.get_timezone(weather_data["coord"]["lat"],weather_data["coord"]["lon"])
+		wdata = Location.day_or_night(weather_data["sys"]["sunrise"], weather_data["sys"]["sunset"], tz_id)
+
 		return render_template("index_weather.html", location=location,
 											 		 current_temp=current_temp,
 											 		 current_condition=current_condition,
-											 		 icon_bitmap=icon_bitmap)
+											 		 icon_bitmap=icon_bitmap,
+											 		 wdata=wdata)
 
 	if request.method=="GET":
 		return render_template("index_weather.html")

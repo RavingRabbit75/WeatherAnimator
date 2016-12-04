@@ -1,6 +1,6 @@
 onload=function(){
 
-	var renderer = PIXI.autoDetectRenderer(1000,500, {transparent: false, resolution: 0.6, antialias:false});
+	var renderer = PIXI.autoDetectRenderer(1000,500, {transparent: false, resolution: 0.5, antialias:false});
 
 	document.getElementById("canvasContainer").appendChild(renderer.view);
 
@@ -48,7 +48,7 @@ onload=function(){
 			var count=0;
 			var timer = setInterval(function() {
 				if(count<amount){
-					var graphics=new PIXI.Sprite(PIXI.loader.resources["/static/images/snow_flake_01.png"].texture);
+					var graphics=new PIXI.Sprite.fromImage("/static/images/snow_flake_01.png");
 					graphics.position.x = this.getRandomInt(0,2000);
 					graphics.position.y = -10;
 					graphics.scale.set(Math.random()+0.5);
@@ -96,7 +96,7 @@ onload=function(){
 			var count=0;
 			var timer = setInterval(function() {
 				if(count<amount){
-					var graphics=new PIXI.Sprite(PIXI.loader.resources["/static/images/rain_drop_02.png"].texture);
+					var graphics=new PIXI.Sprite.fromImage("/static/images/rain_drop_02.png");
 					graphics.position.x = this.getRandomInt(0,2000);
 					graphics.position.y = -10;
 					graphics.scale.set(this.getRandomFloat(0.5, 1));
@@ -109,7 +109,6 @@ onload=function(){
 			}.bind(this), 10);
 
 			stage.addChild(emitter);
-
 		}
 
 		getRandomFloat(min, max) {
@@ -123,39 +122,97 @@ onload=function(){
 		}
 	}
 
-	loadBitmaps();
 
-	function loadBitmaps(){
-		PIXI.loader
-		.add("/static/images/hill_01.png")
-		.add("/static/images/hill_02.png")
-		.add("/static/images/mountain_01.png")
-		.add("/static/images/sky_01.png")
-		.add("/static/images/snow_flake_01.png")
-		.add("/static/images/rain_drop_02.png")
-		.load(setup);
+	var imgsNightPaths={
+		hill1: "/static/images/night/hill_01.png",
+		hill2: "/static/images/night/hill_02.png",
+		mountain: "/static/images/night/mountain_01.png",
+		sky: "/static/images/night/sky_01.png"
+	};
+
+	var imgsDayPaths={
+		hill1: "/static/images/day/hill_01.png",
+		hill2: "/static/images/day/hill_02.png",
+		mountain: "/static/images/day/mountain_01.png",
+		sky: "/static/images/day/sky_01.png"
+	};
+
+	if (typeof wdata!=="undefined"){
+		if (wdata==="night"){
+			setup("night", imgsNightPaths);
+		} else {
+			setup("day", imgsDayPaths);
+		}
+	} else {
+		setup("day", imgsDayPaths);
 	}
+	
 
-	function setup(){
-		var color_red = 0xe74c3c;
-		var color_white = 0xffffff;
-
-		var hill01=new PIXI.Sprite(PIXI.loader.resources["/static/images/hill_01.png"].texture);
-		var hill02=new PIXI.Sprite(PIXI.loader.resources["/static/images/hill_02.png"].texture);
-		var mountain01=new PIXI.Sprite(PIXI.loader.resources["/static/images/mountain_01.png"].texture);
-		var sky01=new PIXI.Sprite(PIXI.loader.resources["/static/images/sky_01.png"].texture);
-		sky01.alpha = 1;
-		// sky01.tint = 0x555555;
+	function setup(time, paths){
+		var body=document.getElementsByTagName("body")[0];
+		if(time==="night"){
+			body.style.backgroundColor="#2A2F4D";
+			renderer.backgroundColor = 0x2A2F4D;
+		} else {
+			body.style.backgroundColor="#AED200";
+			renderer.backgroundColor = 0xAED200;
+		}
+	
+		var hill01=new PIXI.Sprite.fromImage(paths.hill1);
+		var hill02=new PIXI.Sprite.fromImage(paths.hill2);
+		var mountain01=new PIXI.Sprite.fromImage(paths.mountain);
+		var sky01=new PIXI.Sprite.fromImage(paths.sky);
 		stage.addChild(sky01);
 		stage.addChild(mountain01);
 		stage.addChild(hill02);
-		// var emitter=new SnowEmitter(150, color_white);
-		// var emitter=new RainEmitter(150);
+
+		var precipitation;
+		if (typeof w_code!=="undefined"){
+			w_codeInt=parseInt(w_code);
+
+			if (w_codeInt>=500 && w_codeInt<600) {
+				switch(w_codeInt) {
+					case 500:
+						precipitation = new RainEmitter(100);
+						break;
+					case 501:
+						precipitation = new RainEmitter(400);
+						break;
+					case 502:
+						precipitation = new RainEmitter(600);
+						break;
+					case 503:
+						precipitation = new RainEmitter(800);
+						break;
+					case 504:
+						precipitation = new RainEmitter(1000);
+						break;
+					default:
+
+				}
+			}
+
+			if (w_codeInt>=600 && w_codeInt<700) {
+				switch(w_codeInt) {
+					case 600:
+						precipitation = new SnowEmitter(100);
+						break;
+					case 601:
+						precipitation = new SnowEmitter(400);
+						break;
+					case 602:
+						precipitation = new SnowEmitter(600);
+						break;
+					default:
+
+				}
+			}
+		}
+		
 		stage.addChild(hill01);
 		
 		animationLoop();
 	}
-
 
 	animationLoop();
 
@@ -167,60 +224,6 @@ onload=function(){
 		renderer.render(stage);
 	}
 
-
-
-
-	// $(function(){
-	// var $searchField = $("#inputCity");
-	// var cityList = [];
-
-	// $("#searchForm").on("submit", function(e){
-	// 	e.preventDefault();
-	// 	var searchText = $searchField.val();
-
-	// 	$.getJSON("http://api.openweathermap.org/data/2.5/weather?q="+searchText+"&APPID=").then(function(response){
-	// 		$searchField.val("");
-	// 		parseWeatherData(response);
-	// 	}).catch(function(error){
-	// 		console.log("error while trying to fetch data");
-	// 	});
-	// });
-	
-
-	// function parseWeatherData(response){
-	// 	cityList.unshift(response);
-	// 	console.log(response);
-
-	// 	$firstElement = $("#weatherList").first();
-	// 	console.log($firstElement);
-	// 	var tempInF = Math.round((cityList[0].main.temp * (9/5))-459.67) + "℉";
-	// 	var conditions = cityList[0].weather[0].description;
-
-
-	// 	var $divRow = $("<div>", {
-	// 		class: "row boxBorder"
-	// 	});
-	// 	var $cityCol = $("<div>", {
-	// 		class: "cityBox col-xs-7",
-	// 		text: cityList[0].name
-	// 	});
-	// 	var $tempCol = $("<div>", {
-	// 		class: "tempBox col-xs-5 pull-right",
-	// 		text: tempInF
-	// 	});
-	// 	var $conditionCol = $("<div>", {
-	// 		class: "conditionBox col-xs-5 pull-right",
-	// 		text: conditions
-	// 	});
-
-	// 	$("#weatherList").prepend($($divRow)
-	// 					 .append($($cityCol))
-	// 					 .append($($tempCol))
-	// 					 .append($($conditionCol)));
-
-	// }
-
-	// });
 
 };
 

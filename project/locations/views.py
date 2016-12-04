@@ -49,8 +49,25 @@ def locations_show(id, location_id):
 		found_user=User.query.get_or_404(id)
 
 		current_temp=str(Location.kelvin_to_fahrenheit(location_current["main"]["temp"]))+"°F"
-		current_condition=location_current["weather"][0]["description"]
+		current_condition=location_current["weather"][0]["description"].title()
 		icon_bitmap= Location.get_icon_type(location_current["weather"][0]["icon"])
+
+		humidity=location_current["main"]["humidity"]
+		pressure=location_current["main"]["pressure"]
+		wind_speed=location_current["wind"]["speed"]
+		# from IPython import embed; embed()
+		if "deg" in location_current["wind"]:
+			wind_dir=location_current["wind"]["deg"]
+		else:
+			wind_dir="0"
+		
+		
+		tz_id=Location.get_timezone(location_current["coord"]["lat"],location_current["coord"]["lon"])
+		sunrise_time = Location.utc_unix_to_readable(location_current["sys"]["sunrise"], tz_id)
+		sunset_time = Location.utc_unix_to_readable(location_current["sys"]["sunset"], tz_id)
+		wdata = Location.day_or_night(location_current["sys"]["sunrise"], location_current["sys"]["sunset"], tz_id)
+		w_code = location_current["weather"][0]["id"] 
+
 
 	return render_template("locations/show.html", location=found_location,
 												  current=location_current,
@@ -58,7 +75,15 @@ def locations_show(id, location_id):
 												  current_temp=current_temp,
 												  current_condition=current_condition,
 												  icon_bitmap=icon_bitmap,
-												  user=found_user)
+												  humidity=humidity,
+												  pressure=pressure,
+												  wind_speed=wind_speed,
+												  wind_dir=wind_dir,
+												  sunrise_time=sunrise_time,
+												  sunset_time=sunset_time,
+												  user=found_user,
+												  wdata=wdata,
+												  w_code=w_code)
 
 
 

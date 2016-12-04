@@ -16,12 +16,14 @@
 			</div>
 			<div class="col-xs-6 view-btn2 flush-right">
 				<a href="/users/{{user.id}}/locations/new">
-					<button class="btn btn-default">New Location</button>
+					<button class="btn btn-default btnBottomMargin">New Location</button>
 				</a>
 				<a href="/users/{{user.id}}/edit">
-					<button class="btn btn-default">Edit</button>
+					<button class="btn btn-default btnBottomMargin">Edit</button>
 				</a>
-				
+				<a href="{{url_for('users.logout')}}">
+					<button class="btn btn-default btnBottomMargin">Logout</button>
+				</a>
 			</div>
 		</div>
 	</div>

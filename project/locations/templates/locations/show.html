@@ -8,10 +8,10 @@
 	<div class="container-fluid z-index-300">
 		<div class="col-xs-12 topButtons">
 			<a href="/users/{{user.id}}/locations/{{location.id}}/edit">
-				<button type="submit" class="btn btn-default pull-right">Edit</button>
+				<button type="submit" class="btn btn-default pull-right">Notifications</button>
 			</a>
-			<form id="deleteBtnForm" action="/users/{{user.id}}/locations/{{location.id}}?_method=DELETE" method="POST">
-				<button type="submit" class="btn btn-default pull-right btnMargin">Delete</button>
+			<form action="/users/{{user.id}}/locations/{{location.id}}?_method=DELETE" method="POST">
+				<button id="deleteBtn" type="submit" class="btn btn-default pull-right btnMargin">Delete</button>
 			</form>
 		</div>
 
@@ -22,23 +22,43 @@
 		</div>
 		
 	</div>
-	<div class="container-fluid down-250px">
+	<div id="weatherDetails" class="container-fluid">
 		<div class="top-divider-line"></div>
-		{% for location in locations %}
-			<div class="user-box info-box">
-				<div class="col-xs-10">
-					<div class="full-name">{{current.temp}}</div>
-					<div class="full-name">{{current.name}}</div>
-				</div>
-				<div class="col-xs-2 view-btn">
-					<a href="/users/{{user.id}}/locations/{{location.id}}"><button class="btn btn-default">View</button></a>
-				</div>
+		<div id="subDetails" class="white">
+			<div class="col-xs-6 flush-right right-tiny-margin">
+				<p>Current Conditions:<br/>
+				<br/>
+				Humidity:<br/>
+				Pressure:<br/>
+				<br/>
+				Wind Speed:<br/>
+				Wind Direction:<br/>
+				<br/>
+				Sunrise:<br/>
+				Sunset:</p>
 			</div>
-		{% endfor %}
+			<div class="col-xs-6 left-tiny-margin">
+				<p>{{current_condition}}<br/>
+				<br/>
+				{{humidity}}%<br/>
+				{{pressure}} hPa<br/>
+				<br/>
+				{{wind_speed}} meter/sec<br/>
+				{{wind_dir}} degrees<br/>
+				<br/>
+				{{sunrise_time}}<br/>
+				{{sunset_time}}</p>
+			</div>
+		</div>
+
+
 	</div>
 
 
 </div>
-
+<script>
+	var wdata="{{wdata}}";
+	var w_code="{{w_code}}";
+</script>
 <script src="{{url_for('static', filename='js/app.js')}}"></script>	
 {% endblock %}
