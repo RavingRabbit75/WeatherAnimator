@@ -46,6 +46,11 @@ body {
 	height: 50px;
 }
 
+.index-loc-name{
+	font-family: sans-serif;
+	font-size: 20px
+}
+
 
 /* this gets rid of a faint line that bootstrap causes*/
 .navbar-form, .navbar-left {

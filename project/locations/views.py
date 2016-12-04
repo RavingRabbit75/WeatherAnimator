@@ -1,6 +1,9 @@
-from flask import Flask, render_template, redirect, request, url_for, Blueprint
+from flask import Flask, render_template, redirect, request, url_for, Blueprint, session, g
 from flask_modus import Modus
 from flask_sqlalchemy import SQLAlchemy
+
+from flask_login import login_user, logout_user, login_required
+from functools import wraps
 
 from project import db
 from project.locations.models import Location
@@ -11,7 +14,28 @@ from project.users.models import User
 locations_blueprint = Blueprint("locations", __name__,template_folder="templates")
 
 
+def ensure_correct_user(fn):
+	@wraps(fn)
+	def wrapper(*args, **kwargs):
+		if kwargs.get("id") != int(session.get("user_id")):
+			return redirect(url_for("users.show", id=g.current_user.id))
+
+		return fn(*args, **kwargs)
+
+	return wrapper
+
+def ensure_loggied_in(fn):
+	@wraps(fn)
+	def wrapper(*args, **kwargs):
+		if not session.get("user_id"):
+			return redirect(url_for("users.login"))
+		return fn(*args, **kwargs)
+	return wrapper
+
+
 @locations_blueprint.route("/", methods=["GET","POST"])
+@ensure_loggied_in
+@ensure_correct_user
 def index(id):
 	found_locations=User.query.get_or_404(id).locations.all()
 	found_user=User.query.get(id)
@@ -26,6 +50,8 @@ def index(id):
 
 
 
+@ensure_loggied_in
+@ensure_correct_user
 @locations_blueprint.route("/new")
 def locations_new(id):
 	found_user=User.query.get(id)
@@ -34,7 +60,10 @@ def locations_new(id):
 	return render_template("locations/new.html", user=found_user, form=form, errors="")
 
 
+
 @locations_blueprint.route("/<int:location_id>", methods=["GET", "PATCH", "DELETE"])
+@ensure_loggied_in
+@ensure_correct_user
 def locations_show(id, location_id):
 	found_location=Location.query.get_or_404(location_id)
 

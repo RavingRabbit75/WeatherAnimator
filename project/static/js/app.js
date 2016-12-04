@@ -37,7 +37,7 @@ onload=function(){
 	class SnowEmitter {
 		constructor(amount, color){
 			this.amount=amount;
-			var emitter = new PIXI.particles.ParticleContainer(300, {
+			var emitter = new PIXI.particles.ParticleContainer(600, {
 			    scale: true,
 			    position: true,
 			    rotation: true,
@@ -60,7 +60,7 @@ onload=function(){
 				} else {
 					clearInterval(timer);
 				}
-			}.bind(this), 100);
+			}.bind(this), 50);
 
 			stage.addChild(emitter);
 
@@ -170,6 +170,65 @@ onload=function(){
 		if (typeof w_code!=="undefined"){
 			w_codeInt=parseInt(w_code);
 
+			if (w_codeInt>=200 && w_codeInt<300) {
+				switch(w_codeInt) {
+					case 200:
+						precipitation = new RainEmitter(100);
+						break;
+					case 201:
+						precipitation = new RainEmitter(400);
+						break;
+					case 202:
+						precipitation = new RainEmitter(600);
+						break;
+					case 210:
+						precipitation = new RainEmitter(100);
+						break;
+					case 211:
+						precipitation = new RainEmitter(400);
+						break;
+					case 212:
+						precipitation = new RainEmitter(600);
+						break;
+					case 230:
+						precipitation = new RainEmitter(80);
+						break;
+					case 231:
+						precipitation = new RainEmitter(50);
+						break;
+					case 232:
+						precipitation = new RainEmitter(80);
+						break;
+					default:
+						precipitation = new RainEmitter(80);
+				}
+			}
+
+			if (w_codeInt>=300 && w_codeInt<400) {
+				switch(w_codeInt) {
+					case 300:
+						precipitation = new RainEmitter(20);
+						break;
+					case 301:
+						precipitation = new RainEmitter(50);
+						break;
+					case 302:
+						precipitation = new RainEmitter(80);
+						break;
+					case 310:
+						precipitation = new RainEmitter(20);
+						break;
+					case 311:
+						precipitation = new RainEmitter(50);
+						break;
+					case 312:
+						precipitation = new RainEmitter(80);
+						break;
+					default:
+						precipitation = new RainEmitter(80);
+				}
+			}
+
 			if (w_codeInt>=500 && w_codeInt<600) {
 				switch(w_codeInt) {
 					case 500:
@@ -188,6 +247,7 @@ onload=function(){
 						precipitation = new RainEmitter(1000);
 						break;
 					default:
+						precipitation = new RainEmitter(100);
 
 				}
 			}
@@ -203,8 +263,17 @@ onload=function(){
 					case 602:
 						precipitation = new SnowEmitter(600);
 						break;
+					case 620:
+						precipitation = new SnowEmitter(100);
+						break;
+					case 621:
+						precipitation = new SnowEmitter(400);
+						break;
+					case 622:
+						precipitation = new SnowEmitter(600);
+						break;
 					default:
-
+						precipitation = new SnowEmitter(100);
 				}
 			}
 		}

@@ -32,8 +32,7 @@
 		{% for location in locations %}
 			<div class="user-box info-box">
 				<div class="col-xs-10">
-					<div class="full-name">{{location.location}}</div>
-					<div class="full-name">{{location.last_updated}}</div>
+					<div class="index-loc-name white">{{location.location}}</div>
 				</div>
 				<div class="col-xs-2 view-btn">
 					<a href="/users/{{user.id}}/locations/{{location.id}}"><button class="btn btn-default">View</button></a>

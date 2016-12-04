@@ -62,7 +62,7 @@ class Location(db.Model):
 
 	def day_or_night(ts_sunrise, ts_sunset, tz_id):
 		ts_current = arrow.utcnow()
-		if ts_current.timestamp > ts_sunrise:
+		if ts_current.timestamp > ts_sunrise and ts_current.timestamp < ts_sunset:
 			return "day"
 
 		return "night"
