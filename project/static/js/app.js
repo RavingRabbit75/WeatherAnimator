@@ -1,6 +1,6 @@
 onload=function(){
 
-	var renderer = PIXI.autoDetectRenderer(1000,500, {transparent: false, resolution: 0.5, antialias:false});
+	var renderer = PIXI.autoDetectRenderer(1000,400, {transparent: false, resolution: 1.0, antialias:false});
 
 	document.getElementById("canvasContainer").appendChild(renderer.view);
 
@@ -12,25 +12,28 @@ onload=function(){
 
 	var stage = new PIXI.Container();
 	renderer.resize(window.innerWidth, window.innerHeight);
-	let scaleWidth = window.innerWidth/2000;
-	let scaleHeight = window.innerHeight/1600;
-	if (window.innerHeight>window.innerWidth){
-		scaleWidth = scaleHeight;
+	let scaleWidth = window.innerWidth/1000;
+	let scaleHeight = window.innerHeight/400;
+	if (window.innerWidth>1000){
+			scaleHeight = scaleWidth;
 	} 
-	if (window.innerWidth>window.innerHeight){
-		scaleHeight = scaleWidth;
-	}
+	if (window.innerWidth<=1000){
+		scaleHeight = 1.2;
+		scaleWidth = 1.2;
+	} 
 	stage.scale.set(scaleWidth, scaleHeight);
 	window.addEventListener("resize", function(event){
 		renderer.resize(window.innerWidth, window.innerHeight);
-		let scaleWidth = window.innerWidth/2000;
-		let scaleHeight = window.innerHeight/1600;
-		if (window.innerHeight>window.innerWidth){
-			scaleWidth = scaleHeight;
-		} 
-		if (window.innerWidth>window.innerHeight){
+		let scaleWidth = window.innerWidth/1000;
+		let scaleHeight = window.innerHeight/400;
+		if (window.innerWidth>1000){
 			scaleHeight = scaleWidth;
-		}
+		} 
+		if (window.innerWidth<=1000){
+			scaleHeight = 1.2;
+			scaleWidth = 1.2;
+		} 
+		
 		stage.scale.set(scaleWidth, scaleHeight);
 	});
 
@@ -48,11 +51,11 @@ onload=function(){
 			var count=0;
 			var timer = setInterval(function() {
 				if(count<amount){
-					var graphics=new PIXI.Sprite.fromImage("/static/images/snow_flake_01.png");
-					graphics.position.x = this.getRandomInt(0,2000);
+					var graphics=new PIXI.Sprite.fromImage("/static/images/particles/snow_flake_01.png");
+					graphics.position.x = this.getRandomInt(0,1000);
 					graphics.position.y = -10;
 					graphics.scale.set(Math.random()+0.5);
-					var tween = TweenMax.to(graphics.position, this.getRandomInt(5,8), {y:700, repeat:-1, repeatDelay:0.5, ease:Linear.easeNone, onRepeat:this.randomX});
+					var tween = TweenMax.to(graphics.position, this.getRandomInt(5,8), {y:350, repeat:-1, repeatDelay:0.5, ease:Linear.easeNone, onRepeat:this.randomX});
 					var randomWave = "+="+(this.getRandomInt(10,25)).toString();
 					var tween2 = TweenMax.to(graphics.position, this.getRandomInt(1,3), {x:randomWave, repeat:-1, repeatDelay:0.1, yoyo:true, ease:Linear.easeNone});
 					emitter.addChild(graphics);
@@ -96,11 +99,11 @@ onload=function(){
 			var count=0;
 			var timer = setInterval(function() {
 				if(count<amount){
-					var graphics=new PIXI.Sprite.fromImage("/static/images/rain_drop_02.png");
-					graphics.position.x = this.getRandomInt(0,2000);
+					var graphics=new PIXI.Sprite.fromImage("/static/images/particles/rain_drop_02.png");
+					graphics.position.x = this.getRandomInt(0,1000);
 					graphics.position.y = -10;
 					graphics.scale.set(this.getRandomFloat(0.5, 1));
-					var tween = TweenMax.to(graphics.position, this.getRandomFloat(0.5, 1), {y:700, repeat:-1, repeatDelay:0.5, ease:Linear.easeNone});
+					var tween = TweenMax.to(graphics.position, this.getRandomFloat(0.5, 1), {y:350, repeat:-1, repeatDelay:0.5, ease:Linear.easeNone});
 					emitter.addChild(graphics);
 					count++;
 				} else {
