@@ -49,6 +49,7 @@ def index():
 		error_found=next(iter(form.errors.values()))[0]
 		return render_template("users/signup.html", form=form, error=error_found)
 
+
 	return redirect("/")
 
 
