@@ -3,6 +3,7 @@ from flask_modus import Modus
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
+from celery import Celery
 import os
 from flask_wtf.csrf import CsrfProtect
 from flask_restful import Api, Resource, fields, marshal_with
