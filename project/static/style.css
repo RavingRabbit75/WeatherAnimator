@@ -12,6 +12,22 @@ body {
 }
 
 
+/* Navigation bar------------------ */
+.nav li {
+	display: inline;
+}
+.navbar{
+	background-color: #FFFFFF;
+	background-color: rgba(255,255,255,0.3);
+}
+.navbar-default .navbar-brand {
+    color: #555555;
+}
+#navbar {
+    color: #555555;
+}
+
+/*  Original Settings------------------ */
 .topButtons {
 	position: absolute;
 	right: 15px;
@@ -49,6 +65,10 @@ body {
 .index-loc-name{
 	font-family: sans-serif;
 	font-size: 20px
+}
+
+.text-color {
+	color: #444444;
 }
 
 
@@ -165,6 +185,7 @@ body {
 	position: relative;
 	top: 60px;
 	font-size: 60px;
+	text-shadow: 0 0 12px #777777;
 }
 
 #view_locationName {
@@ -172,6 +193,7 @@ body {
 	position: relative;
 	top: 40px;
 	font-size: 25px;
+	text-shadow: 0 0 6px #777777;
 }
 
 

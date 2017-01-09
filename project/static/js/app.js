@@ -176,7 +176,7 @@ onload=function(){
 			var time1 = getRandomInt(300,320)/windSpeed;
 			var time2 = getRandomInt(300,320)/windSpeed;
 			var time3 = getRandomInt(300,320)/windSpeed;
-			console.log(time1)
+			console.log(time1);
 			var tl1 = new TimelineMax({});
 				var offset1="+="+Math.floor(time3*0.3);
 				tl1.add("start", offset1);
