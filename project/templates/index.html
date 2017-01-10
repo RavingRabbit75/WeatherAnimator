@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block navItems %}
-<li><a href="#">Demo</a></li>
+<li><a href="{{url_for('demo')}}">Demo</a></li>
 <li><a href="{{url_for('users.login')}}">Login</a></li>
 <li><a href="{{url_for('users.signup')}}">Signup</a></li>
 {% endblock %}

@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block navItemsCollapsed %}
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	<span class="sr-only">Toggle navigation</span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+</button>
+{% endblock %}
+
+
+{% block content %}
+<div id="mainContainer" class="zeroMargin">
+	<div id="canvasContainer" class="background">
+		
+	</div>
+	<div class="container-fluid z-index-300">
+		<div class="col-xs-12 center">
+			<img src="{{icon_bitmap}}" id="icon_large" alt="">
+			<p id="view_locationTemp">{{current_temp}}</p>
+			<p id="view_locationName">{{current.name}}</p>
+		</div>
+		
+	</div>
+	<div id="weatherDetails" class="container-fluid">
+		<div class="top-divider-line"></div>
+		<div id="subDetails" class="white">
+			<div class="col-xs-6 flush-right right-tiny-margin">
+				<p>Current Conditions:<br/>
+				<br/>
+				Humidity:<br/>
+				Pressure:<br/>
+				<br/>
+				Wind Speed:<br/>
+				Wind Direction:<br/>
+				<br/>
+				Sunrise:<br/>
+				Sunset:</p>
+			</div>
+			<div class="col-xs-6 left-tiny-margin">
+				<p>{{current_condition}}<br/>
+				<br/>
+				{{humidity}}%<br/>
+				{{pressure}} hPa<br/>
+				<br/>
+				{{wind_speed}} meter/sec<br/>
+				{{wind_dir}} degrees<br/>
+				<br/>
+				{{sunrise_time}}<br/>
+				{{sunset_time}}</p>
+			</div>
+		</div>
+
+
+	</div>
+
+
+</div>
+<script>
+	var wdata="{{wdata}}";
+	var w_code="{{w_code}}";
+	var wind_speed="{{wind_speed}}";
+</script>
+<script src="{{url_for('static', filename='js/app.js')}}"></script>	
+{% endblock %}

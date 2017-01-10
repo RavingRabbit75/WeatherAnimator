@@ -1,0 +1,42 @@
+{
+  "base": "stations",
+  "clouds": {
+    "all": 0
+  },
+  "cod": 200,
+  "coord": {
+    "lat": 51.51,
+    "lon": -0.13
+  },
+  "dt": 1480531800,
+  "id": 2643743,
+  "main": {
+    "humidity": 60,
+    "pressure": 1034,
+    "temp": 273.81,
+    "temp_max": 278.15,
+    "temp_min": 269.15
+  },
+  "name": "Scatterd Clouds Demo",
+  "sys": {
+    "country": "NA",
+    "id": 5091,
+    "message": 0.1876,
+    "sunrise": 1480491845,
+    "sunset": 1480521292,
+    "type": 1
+  },
+  "visibility": 10000,
+  "weather": [
+    {
+      "description": "scattered clouds",
+      "icon": "03n",
+      "id": 802	,
+      "main": "Clouds"
+    }
+  ],
+  "wind": {
+    "deg": 230,
+    "speed": 4.1
+  }
+}

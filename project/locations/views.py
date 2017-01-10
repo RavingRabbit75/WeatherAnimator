@@ -39,7 +39,6 @@ def ensure_loggied_in(fn):
 def index(id):
 	found_locations=User.query.get_or_404(id).locations.all()
 	found_user=User.query.get(id)
-
 	if request.method=="POST":
 		new_location=Location(request.form["new_location"],id)
 		db.session.add(new_location)
@@ -47,12 +46,6 @@ def index(id):
 		return redirect(url_for("locations.index", id=id))
 
 	return render_template("locations/index.html", locations=found_locations, user=found_user)
-
-
-
-@locations_blueprint.route("/demo", methods=["GET"])
-def demo():
-	return render_template("locations/demo.html")
 
 
 @ensure_loggied_in
@@ -89,7 +82,6 @@ def locations_show(id, location_id):
 		humidity=location_current["main"]["humidity"]
 		pressure=location_current["main"]["pressure"]
 		wind_speed=location_current["wind"]["speed"]
-		# from IPython import embed; embed()
 		if "deg" in location_current["wind"]:
 			wind_dir=location_current["wind"]["deg"]
 		else:
