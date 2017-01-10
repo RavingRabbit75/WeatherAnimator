@@ -1,5 +1,23 @@
 {% extends "base.html" %}
 
+{% block navItemsCollapsed %}
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	<span class="sr-only">Toggle navigation</span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+</button>
+{% endblock %}
+
+{% block navItems %}
+<li>
+<a href="#" onclick="document.getElementById('myForm').submit();">Delete Location</a>
+<form id="myForm" action="/users/{{user.id}}/locations/{{location.id}}?_method=DELETE" method="POST">
+	<input type="hidden" name="someName" value="" />
+</form>
+</li>
+{% endblock %}
+
 {% block content %}
 <div id="mainContainer" class="zeroMargin">
 	<div id="canvasContainer" class="background">
@@ -10,9 +28,7 @@
 			<!-- <a href="/users/{{user.id}}/locations/{{location.id}}/edit">
 				<button type="submit" class="btn btn-default pull-right">Notifications</button>
 			</a> -->
-			<form action="/users/{{user.id}}/locations/{{location.id}}?_method=DELETE" method="POST">
-				<button id="deleteBtn" type="submit" class="btn btn-default pull-right btnMargin">Delete</button>
-			</form>
+			
 		</div>
 
 		<div class="col-xs-12 center">

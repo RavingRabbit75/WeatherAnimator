@@ -5,9 +5,9 @@
 	<div id="canvasContainer" class="background">
 		
 	</div>
-	<div class="container-fluid">
-		<div id="search_public" class="col-xs-11">
-			<h2>New Location To Follow</h2>
+	<div class="container-fluid z-index-300 down-100px">
+		<div class="">
+			<div class="text-header text-color">New Location To Follow</div>
 			<form class="navbar-form navbar-left" action="/users/{{user.id}}/locations/" method="POST">
 				{{ form.csrf_token }}
 				<div class="form-group">
@@ -20,7 +20,6 @@
 			</form>
 		</div>
 	</div>
-
 </div>
 
 <script src="{{url_for('static', filename='js/app.js')}}"></script>

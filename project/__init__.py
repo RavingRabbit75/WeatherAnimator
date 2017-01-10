@@ -3,11 +3,13 @@ from flask_modus import Modus
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
-from celery import Celery
 import os
 from flask_wtf.csrf import CsrfProtect
 from flask_restful import Api, Resource, fields, marshal_with
 from flask_jwt import JWT, jwt_required, current_identity
+
+from celery import Celery
+from flask_mail import Mail, Message
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
@@ -28,12 +30,23 @@ else:
 	app.config['APP_KEY'] = os.environ.get('APP_KEY')
 	app.config['GOOGLETIMEZONE_KEY'] = os.environ.get('GOOGLETIMEZONE_KEY')
 	app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://localhost/weather_animator'
+	app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379/0'
+	app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost:6379/0'
+	app.config['MAIL_SERVER']='smtp.gmail.com'
+	app.config['MAIL_PORT'] = 465
+	app.config['MAIL_USE_SSL'] = True
+	app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+	app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db=SQLAlchemy(app)
 modus=Modus(app)
 CsrfProtect(app)
+
+mail= Mail(app)
+celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
+celery.conf.update(app.config)
 
 login_manager.login_view = "users.login"
 
@@ -49,11 +62,15 @@ from project.locations.forms import SearchLocationPublic
 app.register_blueprint(users_blueprint, url_prefix="/users")
 app.register_blueprint(locations_blueprint, url_prefix="/users/<int:id>/locations")
 
-
 @app.route("/")
 def root():
-	form = SearchLocationPublic()
-	return render_template("index.html", form=form)
+	# msg = Message('Get Rich Quick Scheme', 
+	# 	sender='mightyturtle75@gmail.com',
+	# 	recipients=['me@raychow.com'])
+	# msg.body="Click this link to get rich quick!"
+	# msg.html = '<b>HTML</b> body'
+	# mail.send(msg)
+	return render_template("index.html")
 
 
 @app.route("/public")

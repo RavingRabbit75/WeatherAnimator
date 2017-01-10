@@ -50,6 +50,11 @@ def index(id):
 
 
 
+@locations_blueprint.route("/demo", methods=["GET"])
+def demo():
+	return render_template("locations/demo.html")
+
+
 @ensure_loggied_in
 @ensure_correct_user
 @locations_blueprint.route("/new")

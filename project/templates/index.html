@@ -1,49 +1,38 @@
 {% extends "base.html" %}
 
+{% block navItemsCollapsed %}
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	<span class="sr-only">Toggle navigation</span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+</button>
+{% endblock %}
+
+{% block navItems %}
+<li><a href="#">Demo</a></li>
+<li><a href="{{url_for('users.login')}}">Login</a></li>
+<li><a href="{{url_for('users.signup')}}">Signup</a></li>
+{% endblock %}
+
 {% block content %}
 
 <div id="mainContainer" class="zeroMargin">
 	<div id="canvasContainer" class="background">
 		
 	</div>
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-		<a class="navbar-brand" href="#">Weather Animator</a>
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-			</div>
-			<div id="navbar" class="collapse navbar-collapse" >
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">Demo</a></li>
-					<li><a href="{{url_for('users.login')}}">Login</a></li>
-					<li><a href="{{url_for('users.signup')}}">Signup</a></li>
-				</ul>
-			</div>
-		</div>
-		
-	</nav>
-
 	<div class="container-fluid">
-		<div id="search_public" class="col-xs-11 text-color">
-			<h3>About this app</h3>
+		<div id="search_public" class="col-xs-11">
+			<p><span class="text-header text-color">About this app</span><br/>
 			<br/>
-			<p>Have you ever wanted a little advanced warning of rain or snow without having to constantly check a weather app or news? <br/>
+			<span class="text-color">Ever wanted a little advanced warning of rain or snow without having to constantly check a weather app or news? <br/>
 			<br/>
 			Weather Animator is a fun little app that displays animations that reflect the current weather conditions of a specified city in the world. At the same time it allows a user to be notified of specific weather conditions they may be looking out for in advance.<br/>
 			<br/>
 			It should go without saying that predicting the weather can be tricky. While this app does pull weather data from a reliable source, weather forecasts can still be wrong. Regardless of this, I hope this app at very least will prepare you every so often from getting rained on.<br/>
 			<br/>
-			Raymond Chow</p>
+			Raymond Chow</span></p>
 		</div>
-		</div class="col-xs-11 text-color">
-			Powered by OpenWeatherMap
-		<div>
 	</div>
 
 </div>

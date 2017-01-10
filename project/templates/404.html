@@ -1,7 +1,18 @@
 {% extends "base.html" %}
 
-{% block title %}Page Not Found{% endblock %}
 {% block content %}
-<h1>404: Page or User Not Found</h1>
-<p>Funding was cut short and we could not finish building this app.</p>
+<div id="mainContainer" class="zeroMargin">
+	<div id="canvasContainer" class="background">
+		
+	</div>
+	<div class="container-fluid z-index-300 down-100px">
+		<div class="">
+			<h2 class="center">404: Page Not Found</h1>
+			<p class="center">This file may have been moved or deleted.<br/>
+			Be sure to check your spelling.</p>
+		</div>
+	</div>
+</div>
+
+<script src="{{url_for('static', filename='js/app.js')}}"></script>
 {% endblock %}

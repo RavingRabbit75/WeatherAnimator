@@ -63,10 +63,6 @@ def show(id):
 	if found_user==None:
 		return render_template("404.html"), 404
 
-	if request.method=="GET":
-		return redirect(url_for("locations.index", id=found_user.id))
-		# return render_template("users/show.html", user=found_user)
-
 	if request.method==b"PATCH" and form.validate():
 		found_user.email=request.form["email"]
 		found_user.password=bcrypt.generate_password_hash(request.form["password"]).decode("UTF-8")
@@ -85,7 +81,7 @@ def show(id):
 		db.session.commit()
 		return redirect("/")
 
-	return render_template("users/show.html")
+	return redirect(url_for("locations.index", id=found_user.id))
 
 
 @users_blueprint.route("/<int:id>/edit")
