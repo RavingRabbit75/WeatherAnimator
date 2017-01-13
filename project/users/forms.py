@@ -13,6 +13,8 @@ class NewUser(FlaskForm):
 											validators.Length(min=1)])
 	last_name = StringField("Last Name", [validators.DataRequired(),
 										  validators.Length(min=1)])
+	# area_code = IntegerField('Area Code', [validators.required()])
+	# number = StringField('Number')
 
 
 class EditUser(FlaskForm):

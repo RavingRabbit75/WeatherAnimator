@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="mainContainer" class="zeroMargin">
+	<div id="canvasContainer" class="background">
+		
+	</div>
+	<div class="container-fluid z-index-300 down-100px">
+		<div class="">
+			<div class="text-header text-color">Edit Notifications</div>
+			<form class="navbar-form navbar-left" action="#">
+				{{ form.csrf_token }}
+				<div class="form-group">
+
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+</div>
+
+<script src="{{url_for('static', filename='js/app.js')}}"></script>
+{% endblock %}

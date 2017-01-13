@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block navItemsCollapsed %}
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	<span class="sr-only">Toggle navigation</span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+</button>
+{% endblock %}
+
+{% block navItems %}
+<li><a href="/users/{{user.id}}/locations/{{location.id}}/notifications/new">New Notification</a></li>
+<li><a href="/users/{{user.id}}/edit">Account Info</a></li>
+<li><a href="{{url_for('users.logout')}}">Logout</a></li>
+{% endblock %}
+
+{% block content %}
+<div id="mainContainer" class="zeroMargin">
+	<div id="canvasContainer" class="background">
+		
+	</div>
+	<div class="container-fluid down-350px">
+		<span class="text-header text-color">Weather Notifications</span><br/>
+		<br/>
+		<div class="top-divider-line"></div>
+		{% for notification in notifications %}
+			<div>
+				<div class="col-xs-10">
+					<div class="index-loc-name white">{{notification.id}}</div>
+				</div>
+				<div class="col-xs-2 view-btn">
+					<a href="/users/{{user.id}}/locations/{{location.id}}/notifications/{{notification.id}}"><button class="btn btn-default">View</button></a>
+				</div>
+			</div>
+		{% endfor %}
+		</div>
+	</div>
+</div>
+<script src="{{url_for('static', filename='js/app.js')}}"></script>
+{% endblock %}
+
+

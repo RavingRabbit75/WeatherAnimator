@@ -5,11 +5,13 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 import os
 from flask_wtf.csrf import CsrfProtect
-from flask_restful import Api, Resource, fields, marshal_with
-from flask_jwt import JWT, jwt_required, current_identity
+# from flask_restful import Api, Resource, fields, marshal_with
+# from flask_jwt import JWT, jwt_required, current_identity
 
-from celery import Celery
+# from celery import Celery
 from flask_mail import Mail, Message
+# from project.celery import celery
+# from project.tasks import mul
 
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
@@ -30,8 +32,8 @@ else:
 	app.config['APP_KEY'] = os.environ.get('APP_KEY')
 	app.config['GOOGLETIMEZONE_KEY'] = os.environ.get('GOOGLETIMEZONE_KEY')
 	app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://localhost/weather_animator'
-	app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379/0'
-	app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost:6379/0'
+	# app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379/0'
+	# app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost:6379/0'
 	app.config['MAIL_SERVER']='smtp.gmail.com'
 	app.config['MAIL_PORT'] = 465
 	app.config['MAIL_USE_SSL'] = True
@@ -45,8 +47,8 @@ modus=Modus(app)
 CsrfProtect(app)
 
 mail= Mail(app)
-celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
-celery.conf.update(app.config)
+# celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
+# celery.conf.update(app.config)
 
 login_manager.login_view = "users.login"
 
@@ -56,11 +58,13 @@ from project.locations.models import Location
 from project.notifications.models import Notification
 from project.users.views import users_blueprint
 from project.locations.views import locations_blueprint
-from project.locations.forms import SearchLocationPublic
+from project.notifications.views import notifications_blueprint
 
 
 app.register_blueprint(users_blueprint, url_prefix="/users")
 app.register_blueprint(locations_blueprint, url_prefix="/users/<int:id>/locations")
+app.register_blueprint(notifications_blueprint, url_prefix="/users/<int:id>/locations/<int:loc_id>/notifications")
+
 
 @app.route("/")
 def root():
@@ -163,8 +167,11 @@ def load_user(user_id):
 
 
 
-
-
+# @app.route("/test/<name>")
+# def test(name):
+# 	results=mul.delay(10, 20)
+# 	print(results.ready()) # should be false
+# 	return "sent to celery task"
 
 
 
