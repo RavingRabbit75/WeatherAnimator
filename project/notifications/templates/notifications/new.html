@@ -7,8 +7,8 @@
 	</div>
 	<div class="container-fluid z-index-300 down-100px">
 		<div class="">
-			<div class="text-header text-color">Edit Notification</div>
-			<form class="navbar-form navbar-left" action="{{url_for('notifications.show', id=user.id, loc_id=location.id, notif_id=notification.id)}}?_method=PATCH" method="POST">
+			<div class="text-header text-color">New Notification</div>
+			<form class="navbar-form navbar-left" action="/users/{{user.id}}/locations/{{location.id}}/notifications/" method="POST">
 				{{ form.csrf_token }}
 				<div class="form-group">
 					{{ form.condition(class="form-control") }}
@@ -25,9 +25,3 @@
 
 <script src="{{url_for('static', filename='js/app.js')}}"></script>
 {% endblock %}
-
-
-
-<!-- action="{{url_for('users.show', id=user.id)}}?_method=PATCH" -->
-
-<!-- action="/users/{{user.id}}/locations/{{location.id}}/notifications/?_method=PATCH" -->

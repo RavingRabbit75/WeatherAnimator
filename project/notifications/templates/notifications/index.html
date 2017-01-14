@@ -25,12 +25,12 @@
 		<br/>
 		<div class="top-divider-line"></div>
 		{% for notification in notifications %}
-			<div>
+			<div class="user-box info-box">
 				<div class="col-xs-10">
-					<div class="index-loc-name white">{{notification.id}}</div>
+					<div class="index-loc-name white">{{notification.location}}, {{notification.weather_type}} :  {{notification.days_notice}}-day notice</div>
 				</div>
 				<div class="col-xs-2 view-btn">
-					<a href="/users/{{user.id}}/locations/{{location.id}}/notifications/{{notification.id}}"><button class="btn btn-default">View</button></a>
+					<a href="/users/{{user.id}}/locations/{{location.id}}/notifications/{{notification.id}}/edit"><button class="btn btn-default">Edit</button></a>
 				</div>
 			</div>
 		{% endfor %}

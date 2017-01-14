@@ -1,5 +1,4 @@
 from project import db
-from datetime import datetime
 
 class Notification(db.Model):
 	__tablename__ = "notifications"
@@ -12,10 +11,11 @@ class Notification(db.Model):
 	user_id=db.Column(db.Integer, db.ForeignKey("users.id"))
 
 
-	def __init__(self, location, weather_type, days_notice, user_id):
+	def __init__(self, location, weather_type, days_notice, location_id, user_id):
 		self.location = location
 		self.weather_type = weather_type
 		self.days_notice = days_notice
+		self.location_id = location_id
 		self.user_id = user_id
 
 
@@ -23,4 +23,5 @@ class Notification(db.Model):
 		return "{} notification for user {}.".format(self.location, 
 													 self.weather_type, 
 													 self.days_notice, 
+													 self.location_id,
 													 self.user_id)
