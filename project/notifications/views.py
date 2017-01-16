@@ -79,7 +79,6 @@ def show(id, loc_id, notif_id):
 	found_user=User.query.get_or_404(id)
 	form=NotificationForm(request.form)
 
-	from IPython import embed; embed()
 	if found_user==None:
 		return render_template("404.html"), 404
 
