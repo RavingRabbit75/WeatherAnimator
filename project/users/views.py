@@ -77,13 +77,16 @@ def show(id):
 		return render_template("users/edit.html", user=found_user, form=form, error=error_found)
 
 	if request.method==b"DELETE":
-		# found_location=Location.query.get_or_404(location_id)
-		# if request.method == b"DELETE":
-		# 	db.session.delete(found_location)
-		# 	db.session.commit()
-		# 	return redirect(url_for('locations.index', id=id))
+		found_locations=Location.query.filter_by(user_id=id).all()
+		found_notifications=Notification.query.filter_by(user_id=id).all()
+		for notification in found_notifications:
+			db.session.delete(notification)
 
+		db.session.commit()
+		for location in found_locations:
+			db.session.delete(location)
 
+		db.session.commit()
 		db.session.delete(found_user)
 		db.session.commit()
 		return redirect("/")

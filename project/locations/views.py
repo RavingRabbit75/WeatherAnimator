@@ -9,6 +9,7 @@ from project import db
 from project.locations.models import Location
 from project.locations.forms import NewLocation
 from project.users.models import User
+from project.notifications.models import Notification
 
 
 locations_blueprint = Blueprint("locations", __name__,template_folder="templates")
@@ -66,6 +67,12 @@ def locations_show(id, location_id):
 	found_location=Location.query.get_or_404(location_id)
 
 	if request.method == b"DELETE":
+		found_notifications=Notification.query.filter_by(location_id=location_id).all()
+		for notification in found_notifications:
+			db.session.delete(notification)
+
+		db.session.commit()
+	
 		db.session.delete(found_location)
 		db.session.commit()
 		return redirect(url_for('locations.index', id=id))
