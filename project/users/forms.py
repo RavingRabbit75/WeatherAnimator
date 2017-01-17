@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, validators
+from wtforms import StringField, IntegerField, PasswordField, validators
 
 class NewUser(FlaskForm):
 	email=StringField("Email", [validators.DataRequired(),
@@ -13,8 +13,6 @@ class NewUser(FlaskForm):
 											validators.Length(min=1)])
 	last_name = StringField("Last Name", [validators.DataRequired(),
 										  validators.Length(min=1)])
-	# area_code = IntegerField('Area Code', [validators.required()])
-	# number = StringField('Number')
 
 
 class EditUser(FlaskForm):
@@ -29,6 +27,8 @@ class EditUser(FlaskForm):
 											validators.Length(min=1)])
 	last_name = StringField("Last Name", [validators.DataRequired(),
 										  validators.Length(min=1)])
+	phone_number = IntegerField('Number', [validators.Optional(),
+										   validators.Length(min=10,max=10)])
 
 
 class LoginUser(FlaskForm):

@@ -99,14 +99,6 @@ def test():
 		else:
 			print("Notification is False")
 
-	# locations_5day_forcast[idx]
-	# found_location=Location.query.get_or_404(location_id)
-
-	# location_current=Location.get_current_weather(found_location.location)
-
-
-
-
 
 	return notif_locations
 

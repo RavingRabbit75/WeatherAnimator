@@ -77,6 +77,13 @@ def show(id):
 		return render_template("users/edit.html", user=found_user, form=form, error=error_found)
 
 	if request.method==b"DELETE":
+		# found_location=Location.query.get_or_404(location_id)
+		# if request.method == b"DELETE":
+		# 	db.session.delete(found_location)
+		# 	db.session.commit()
+		# 	return redirect(url_for('locations.index', id=id))
+
+
 		db.session.delete(found_user)
 		db.session.commit()
 		return redirect("/")

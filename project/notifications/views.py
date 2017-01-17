@@ -89,10 +89,10 @@ def show(id, loc_id, notif_id):
 		db.session.commit()
 		return redirect(url_for("notifications.index", id=found_user.id, loc_id=found_location.id))
 
-	# if request.method==b"DELETE":
-	# 	db.session.delete(found_notification)
-	# 	db.session.commit()
-	# 	return redirect("/")
+	if request.method==b"DELETE":
+		db.session.delete(found_notification)
+		db.session.commit()
+		return redirect(url_for("notifications.index", id=found_user.id, loc_id=found_location.id))
 
 	return redirect(url_for("notifications.index", id=found_user.id, loc_id=found_location.id))
 

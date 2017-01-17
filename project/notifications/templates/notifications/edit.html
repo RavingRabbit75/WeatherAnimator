@@ -1,5 +1,23 @@
 {% extends "base.html" %}
 
+{% block navItemsCollapsed %}
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	<span class="sr-only">Toggle navigation</span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+	<span class="icon-bar"></span>
+</button>
+{% endblock %}
+
+{% block navItems %}
+<li>
+<a href="#" onclick="document.getElementById('myForm').submit();">Delete Notification</a>
+<form id="myForm" action="/users/{{user.id}}/locations/{{location.id}}/notifications/{{notification.id}}?_method=DELETE" method="POST">
+	<input type="hidden" name="someName" value="" />
+</form>
+</li>
+{% endblock %}
+
 {% block content %}
 <div id="mainContainer" class="zeroMargin">
 	<div id="canvasContainer" class="background">

@@ -9,7 +9,6 @@ class User(db.Model, UserMixin):
 	password=db.Column(db.Text)
 	first_name=db.Column(db.Text)
 	last_name=db.Column(db.Text)
-	phone_area_code=db.Column(db.Integer)
 	phone_number=db.Column(db.Integer)
 	locations=db.relationship("Location", backref="user", lazy="dynamic")
 	notifications=db.relationship("Notification", backref="user", lazy="dynamic")
