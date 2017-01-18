@@ -8,12 +8,10 @@ celery = Celery('proj',
              include=['project.tasks'])
 
 
-
-
 celery.conf.beat_schedule={
 	'my_periodic_task': {
-		'task': 'project.tasks.test',
-		'schedule': 10
+		'task': 'project.tasks.check_notifications',
+		'schedule': crontab(minute=0, hour='4,16') # checks and sends notifs at 4am and 4pm GMT (or 8am & 8pm Pacific time)
 	}
 
 }

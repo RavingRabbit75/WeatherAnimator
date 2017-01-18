@@ -15,6 +15,7 @@ celery_config={}
 celery_config["TWILIO_ACCOUNT_SID"] = os.environ.get("TWILIO_ACCOUNT_SID")
 celery_config['TWILIO_AUTH_TOKEN'] = os.environ.get('TWILIO_AUTH_TOKEN')
 celery_config['TWILIO_PHONE_NUMBER'] = os.environ.get('TWILIO_PHONE_NUMBER')
+celery_config['TEMP_PHONE_NUMBER'] = os.environ.get('TEMP_PHONE_NUMBER')
 
 client = TwilioRestClient(celery_config["TWILIO_ACCOUNT_SID"], celery_config['TWILIO_AUTH_TOKEN'])
 
@@ -53,7 +54,7 @@ def setup_periodic_tasks(sender, **kwargs):
 
 
 @celery.task
-def test():
+def check_notifications():
 
 	found_locations=db.session.query(Notification.location.distinct().label("location"))
 	notif_locations=[row.location for row in found_locations]
@@ -86,14 +87,22 @@ def test():
 
 
 	for notif in notifs_to_check:
+		# print(celery_config['TEMP_PHONE_NUMBER'], celery_config['TWILIO_PHONE_NUMBER'])
+
 		if check_notification(notif.location, notif.weather_type, notif.days_notice):
-			message=client.messages.create(
-			    to=celery_config['TEMP_PHONE_NUMBER'],
-			    from_=celery_config['TWILIO_PHONE_NUMBER'], 
-			    body="This is your weather notification for {}. There will be {} in about {} day(s).".format(notif.location, notif.weather_type, notif.days_notice)
-			)
-			print(message)
-			print("Notification is True")
+			found_user=User.query.get(notif.user_id)
+			if found_user.phone_number:
+				message=client.messages.create(
+				    to="+1"+found_user.phone_number,
+				    from_=celery_config['TWILIO_PHONE_NUMBER'], 
+				    body="Hello {}. This is your weather notification for {}. There will be {} in about {} day(s).".format(found_user.first_name,
+				    																									   notif.location, 
+				    																									   notif.weather_type, 
+				    																									   notif.days_notice)
+				)
+				print(message)
+			else:
+				print("No phone number for {}".format(found_user.first_name))
 
 		else:
 			print("Notification is False")
