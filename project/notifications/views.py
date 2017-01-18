@@ -38,7 +38,7 @@ def ensure_loggied_in(fn):
 @ensure_loggied_in
 @ensure_correct_user
 def index(id, loc_id):
-	found_notifications=Notification.query.all()
+	found_notifications=Notification.query.filter_by(user_id=id)
 	found_location=Location.query.get_or_404(loc_id)
 	found_user=User.query.get(id)
 

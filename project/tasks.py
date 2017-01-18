@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from project import db
 from project.locations.models import Location
 from project.notifications.models import Notification
+from project.users.models import User
 from datetime import datetime
 import os
 from twilio.rest import TwilioRestClient 
@@ -14,7 +15,6 @@ celery_config={}
 celery_config["TWILIO_ACCOUNT_SID"] = os.environ.get("TWILIO_ACCOUNT_SID")
 celery_config['TWILIO_AUTH_TOKEN'] = os.environ.get('TWILIO_AUTH_TOKEN')
 celery_config['TWILIO_PHONE_NUMBER'] = os.environ.get('TWILIO_PHONE_NUMBER')
-celery_config['TEMP_PHONE_NUMBER'] = os.environ.get('TEMP_PHONE_NUMBER')
 
 client = TwilioRestClient(celery_config["TWILIO_ACCOUNT_SID"], celery_config['TWILIO_AUTH_TOKEN'])
 
@@ -86,7 +86,6 @@ def test():
 
 
 	for notif in notifs_to_check:
-		print(celery_config['TEMP_PHONE_NUMBER'], celery_config['TWILIO_PHONE_NUMBER'])
 		if check_notification(notif.location, notif.weather_type, notif.days_notice):
 			message=client.messages.create(
 			    to=celery_config['TEMP_PHONE_NUMBER'],

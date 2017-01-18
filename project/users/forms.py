@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, IntegerField, PasswordField, validators
+from wtforms import StringField, PasswordField, validators
 
 class NewUser(FlaskForm):
 	email=StringField("Email", [validators.DataRequired(),
@@ -27,8 +27,10 @@ class EditUser(FlaskForm):
 											validators.Length(min=1)])
 	last_name = StringField("Last Name", [validators.DataRequired(),
 										  validators.Length(min=1)])
-	phone_number = IntegerField('Number', [validators.Optional(),
-										   validators.Length(min=10,max=10)])
+
+	# requried format (U.S. numbers only so far): ###-###-####
+	phone_number = StringField('Phone Number', [validators.Optional(),
+												validators.Regexp('\d{3}-\d{3}-\d{4}', message="Entry must a valid U.S. phone number")])
 
 
 class LoginUser(FlaskForm):

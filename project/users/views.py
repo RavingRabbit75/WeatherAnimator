@@ -68,9 +68,10 @@ def show(id):
 		found_user.password=bcrypt.generate_password_hash(request.form["password"]).decode("UTF-8")
 		found_user.first_name=request.form["first_name"];
 		found_user.last_name=request.form["last_name"];
+		found_user.phone_number=request.form["phone_number"];
 		db.session.add(found_user)
 		db.session.commit()
-		return redirect(url_for("users.index"))
+		return redirect(url_for("locations.index", id=found_user.id))
 
 	if request.method==b"PATCH":
 		error_found=next(iter(form.errors.values()))[0]
