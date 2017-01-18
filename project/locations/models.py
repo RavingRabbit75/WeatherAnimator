@@ -54,6 +54,14 @@ class Location(db.Model):
 		return r.json()["timeZoneId"]
 
 
+	def get_dayOfWeek(utc_time, tz_id):
+		momentObj= moment.unix(utc_time, utc=True).timezone(tz_id)
+		return momentObj.format('dddd')
+
+	def get_hour(utc_time, tz_id):
+		momentObj= moment.unix(utc_time, utc=True).timezone(tz_id)
+		return momentObj.format('HH')
+
 	def utc_unix_to_readable(utc_time, tz_id):
 		momentObj= moment.unix(utc_time, utc=True).timezone(tz_id)
 		time_string = momentObj.format("h:mm A")

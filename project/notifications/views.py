@@ -77,7 +77,6 @@ def show(id, loc_id, notif_id):
 	found_notification=Notification.query.get_or_404(notif_id)
 	found_location=Location.query.get_or_404(loc_id)
 	found_user=User.query.get_or_404(id)
-	form=NotificationForm(request.form)
 
 	if found_user==None:
 		return render_template("404.html"), 404

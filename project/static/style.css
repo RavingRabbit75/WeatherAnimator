@@ -115,6 +115,10 @@ body {
 	text-align: right;
 }
 
+.flush-left {
+	text-align: left;
+}
+
 .down-350px{
 	position: relative;
 	top: 350px;
@@ -235,11 +239,44 @@ body {
 #subDetails {
 	height:220px;
 	border-bottom: 1px solid white;
+}	
+
+.icon_small {
+	width: 30px;
+	height: 30px;
+}
+
+#forecast_section{
+	width: 300px;
+	margin: 0 auto; 
+}
+
+.top-spacing-15px{
+	margin-top: 15px;
+}
+.bottom-spacing-15px{
+	margin-bottom: 15px;
 }
 
 
-
-
+.forecast_col1{
+	display: inline-block;
+	width: 120px;
+	text-align: right;
+}
+.forecast_col2{
+	display: inline-block;
+	width: 60px;
+	text-align: center;
+}
+.forecast_col3{
+	display: inline-block;
+	width: 40px;
+}
+.forecast_col4{
+	display: inline-block;
+	width: 40px;
+}
 
 
 

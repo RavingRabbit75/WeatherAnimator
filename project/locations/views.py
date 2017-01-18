@@ -101,6 +101,34 @@ def locations_show(id, location_id):
 		wdata = Location.day_or_night(location_current["sys"]["sunrise"], location_current["sys"]["sunset"], tz_id)
 		w_code = location_current["weather"][0]["id"] 
 
+		# for some reason the length of the forecast can vary. 38-40 so far.
+		# last_day=len(location_forecast["list"])-1
+		forecasts_idxs=[]
+		for idx, timeSlot in enumerate(location_forecast["list"]):
+			if int(Location.get_hour(timeSlot["dt"], tz_id)) in (8,9,10):
+				forecasts_idxs.append(idx)
+
+		day1=Location.get_dayOfWeek(location_forecast["list"][forecasts_idxs[0]]["dt"],tz_id)
+		day2=Location.get_dayOfWeek(location_forecast["list"][forecasts_idxs[1]]["dt"],tz_id)
+		day3=Location.get_dayOfWeek(location_forecast["list"][forecasts_idxs[2]]["dt"],tz_id)
+		day4=Location.get_dayOfWeek(location_forecast["list"][forecasts_idxs[3]]["dt"],tz_id)
+		day5=Location.get_dayOfWeek(location_forecast["list"][forecasts_idxs[4]]["dt"],tz_id)
+		day1_icon=Location.get_icon_type(location_forecast["list"][forecasts_idxs[0]]["weather"][0]["icon"])
+		day2_icon=Location.get_icon_type(location_forecast["list"][forecasts_idxs[1]]["weather"][0]["icon"])
+		day3_icon=Location.get_icon_type(location_forecast["list"][forecasts_idxs[2]]["weather"][0]["icon"])
+		day4_icon=Location.get_icon_type(location_forecast["list"][forecasts_idxs[3]]["weather"][0]["icon"])
+		day5_icon=Location.get_icon_type(location_forecast["list"][forecasts_idxs[4]]["weather"][0]["icon"])
+
+		day1_temp_max=str(Location.kelvin_to_fahrenheit(location_forecast["list"][forecasts_idxs[0]]["main"]["temp_max"]))+"°"
+		day2_temp_max=str(Location.kelvin_to_fahrenheit(location_forecast["list"][forecasts_idxs[1]]["main"]["temp_max"]))+"°"
+		day3_temp_max=str(Location.kelvin_to_fahrenheit(location_forecast["list"][forecasts_idxs[2]]["main"]["temp_max"]))+"°"
+		day4_temp_max=str(Location.kelvin_to_fahrenheit(location_forecast["list"][forecasts_idxs[3]]["main"]["temp_max"]))+"°"
+		day5_temp_max=str(Location.kelvin_to_fahrenheit(location_forecast["list"][forecasts_idxs[4]]["main"]["temp_max"]))+"°"
+		day1_temp_min=str(Location.kelvin_to_fahrenheit(location_forecast["list"][forecasts_idxs[0]]["main"]["temp_min"]))+"°"
+		day2_temp_min=str(Location.kelvin_to_fahrenheit(location_forecast["list"][forecasts_idxs[1]]["main"]["temp_min"]))+"°"
+		day3_temp_min=str(Location.kelvin_to_fahrenheit(location_forecast["list"][forecasts_idxs[2]]["main"]["temp_min"]))+"°"
+		day4_temp_min=str(Location.kelvin_to_fahrenheit(location_forecast["list"][forecasts_idxs[3]]["main"]["temp_min"]))+"°"
+		day5_temp_min=str(Location.kelvin_to_fahrenheit(location_forecast["list"][forecasts_idxs[4]]["main"]["temp_min"]))+"°"
 
 	return render_template("locations/show.html", location=found_location,
 												  current=location_current,
@@ -115,6 +143,26 @@ def locations_show(id, location_id):
 												  sunrise_time=sunrise_time,
 												  sunset_time=sunset_time,
 												  user=found_user,
+												  day1=day1,
+												  day2=day2,
+												  day3=day3,
+												  day4=day4,
+												  day5=day5,
+												  day1_icon=day1_icon,
+												  day2_icon=day2_icon,
+												  day3_icon=day3_icon,
+												  day4_icon=day4_icon,
+												  day5_icon=day5_icon,
+												  day1_temp_max=day1_temp_max,
+												  day2_temp_max=day2_temp_max,
+												  day3_temp_max=day3_temp_max,
+												  day4_temp_max=day4_temp_max,
+												  day5_temp_max=day5_temp_max,
+												  day1_temp_min=day1_temp_min,
+												  day2_temp_min=day2_temp_min,
+												  day3_temp_min=day3_temp_min,
+												  day4_temp_min=day4_temp_min,
+												  day5_temp_min=day5_temp_min,
 												  wdata=wdata,
 												  w_code=w_code)
 
