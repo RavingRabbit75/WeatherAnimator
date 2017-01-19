@@ -1,12 +1,22 @@
 from __future__ import absolute_import, unicode_literals
 from celery import Celery
 from celery.schedules import crontab
+import os
+
+celery_config={}
+if os.environ.get("ENV") == "production":
+	celery_config["CELERY_BROKER"] = os.environ.get("CELERY_BROKER")
+	celery_config['CELERY_BACKEND'] = os.environ.get("CELERY_BACKEND")
+
+else:
+	celery_config["CELERY_BROKER"] = 'redis://localhost:6379/0'
+	celery_config['CELERY_BACKEND'] = 'redis://localhost:6379/0'
+
 
 celery = Celery('proj',
-             broker='redis://localhost:6379/0',
-             backend='redis://localhost:6379/0',
+             broker=celery_config["CELERY_BROKER"],
+             backend=celery_config['CELERY_BACKEND'],
              include=['project.tasks'])
-
 
 celery.conf.beat_schedule={
 	'my_periodic_task': {

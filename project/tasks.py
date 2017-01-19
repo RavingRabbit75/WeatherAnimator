@@ -1,8 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 from project.celery import celery
-from celery.schedules import crontab
-import time
-from flask_sqlalchemy import SQLAlchemy
 from project import db
 from project.locations.models import Location
 from project.notifications.models import Notification
@@ -11,45 +8,16 @@ from datetime import datetime
 import os
 from twilio.rest import TwilioRestClient 
 
-celery_config={}
-celery_config["TWILIO_ACCOUNT_SID"] = os.environ.get("TWILIO_ACCOUNT_SID")
-celery_config['TWILIO_AUTH_TOKEN'] = os.environ.get('TWILIO_AUTH_TOKEN')
-celery_config['TWILIO_PHONE_NUMBER'] = os.environ.get('TWILIO_PHONE_NUMBER')
-celery_config['TEMP_PHONE_NUMBER'] = os.environ.get('TEMP_PHONE_NUMBER')
+twilio_config={}
+twilio_config["TWILIO_ACCOUNT_SID"] = os.environ.get("TWILIO_ACCOUNT_SID")
+twilio_config['TWILIO_AUTH_TOKEN'] = os.environ.get('TWILIO_AUTH_TOKEN')
+twilio_config['TWILIO_PHONE_NUMBER'] = os.environ.get('TWILIO_PHONE_NUMBER')
 
-client = TwilioRestClient(celery_config["TWILIO_ACCOUNT_SID"], celery_config['TWILIO_AUTH_TOKEN'])
-
-@celery.task
-def add(x, y):
-	return x + y
-
-
-@celery.task
-def mul(x, y):
-	# time.sleep(10)
-	print(x*y)
-	return x * y
-
-
-@celery.task
-def xsum(numbers):
-	return sum(numbers)
+client = TwilioRestClient(twilio_config["TWILIO_ACCOUNT_SID"], twilio_config['TWILIO_AUTH_TOKEN'])
 
 
 @celery.on_after_configure.connect
 def setup_periodic_tasks(sender, **kwargs):
-	# Calls test('hello') every 10 seconds.
-	# sender.add_periodic_task(10.0, test.s('hello'), name='add every 10')
-
-	# Calls test('world') every 30 seconds
-	# sender.add_periodic_task(30.0, test.s('world'), expires=10)
-	# sender.add_periodic_task(30.0, test.s('world'), expires=10)
-
-	# Executes every Monday morning at 7:30 a.m.
-	# sender.add_periodic_task(
-	# 	crontab(hour=7, minute=30, day_of_week=1),
-	# 	test.s('Happy Mondays!'),
-	# )
 	pass
 
 
@@ -62,8 +30,6 @@ def check_notifications():
 	for location in notif_locations:
 		locations_5day_forcast.append(Location.get_5day_forecast(location))
 
-	# print(notif_locations[0])
-	# print(locations_5day_forcast[0]["city"]["name"])
 
 	notifs_to_check=Notification.query.all()
 	# 10800 seconds = 3 hours
@@ -87,14 +53,13 @@ def check_notifications():
 
 
 	for notif in notifs_to_check:
-		# print(celery_config['TEMP_PHONE_NUMBER'], celery_config['TWILIO_PHONE_NUMBER'])
 
 		if check_notification(notif.location, notif.weather_type, notif.days_notice):
 			found_user=User.query.get(notif.user_id)
 			if found_user.phone_number:
 				message=client.messages.create(
 				    to="+1"+found_user.phone_number,
-				    from_=celery_config['TWILIO_PHONE_NUMBER'], 
+				    from_=twilio_config['TWILIO_PHONE_NUMBER'], 
 				    body="Hello {}. This is your weather notification for {}. There will be {} in about {} day(s).".format(found_user.first_name,
 				    																									   notif.location, 
 				    																									   notif.weather_type, 
