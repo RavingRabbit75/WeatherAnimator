@@ -9,7 +9,6 @@ from flask_wtf.csrf import CsrfProtect
 # from flask_jwt import JWT, jwt_required, current_identity
 
 # from celery import Celery
-from flask_mail import Mail, Message
 # from project.celery import celery
 # from project.tasks import mul
 
@@ -32,8 +31,6 @@ else:
 	app.config['APP_KEY'] = os.environ.get('APP_KEY')
 	app.config['GOOGLETIMEZONE_KEY'] = os.environ.get('GOOGLETIMEZONE_KEY')
 	app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://localhost/weather_animator'
-	# app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379/0'
-	# app.config['CELERY_RESULT_BACKEND'] = 'redis://localhost:6379/0'
 	app.config['MAIL_SERVER']='smtp.gmail.com'
 	app.config['MAIL_PORT'] = 465
 	app.config['MAIL_USE_SSL'] = True
@@ -68,12 +65,6 @@ app.register_blueprint(notifications_blueprint, url_prefix="/users/<int:id>/loca
 
 @app.route("/")
 def root():
-	# msg = Message('Get Rich Quick Scheme', 
-	# 	sender='mightyturtle75@gmail.com',
-	# 	recipients=['me@raychow.com'])
-	# msg.body="Click this link to get rich quick!"
-	# msg.html = '<b>HTML</b> body'
-	# mail.send(msg)
 	return render_template("index.html")
 
 
