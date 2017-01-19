@@ -31,11 +31,6 @@ else:
 	app.config['APP_KEY'] = os.environ.get('APP_KEY')
 	app.config['GOOGLETIMEZONE_KEY'] = os.environ.get('GOOGLETIMEZONE_KEY')
 	app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://localhost/weather_animator'
-	app.config['MAIL_SERVER']='smtp.gmail.com'
-	app.config['MAIL_PORT'] = 465
-	app.config['MAIL_USE_SSL'] = True
-	app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-	app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
@@ -43,7 +38,6 @@ db=SQLAlchemy(app)
 modus=Modus(app)
 CsrfProtect(app)
 
-mail= Mail(app)
 # celery = Celery(app.name, broker=app.config['CELERY_BROKER_URL'])
 # celery.conf.update(app.config)
 
