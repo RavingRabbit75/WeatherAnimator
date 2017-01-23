@@ -48,6 +48,28 @@ body {
 	text-decoration: none;
 }
 
+.navbar-nav{
+	color: #FFFFFF;
+}
+
+.navbar-home-link{
+	text-decoration: none;
+	color: #FFFFFF;
+}
+.navbar-home-link:hover{
+	text-decoration: none;
+	color: #000000;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+	color: black;  /*Sets the text hover color on navbar*/
+}
+
+
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:focus {
+	color: white;  /*Sets the text hover color on navbar*/
+}
+
 /*  Original Settings------------------ */
 .topButtons {
 	position: absolute;

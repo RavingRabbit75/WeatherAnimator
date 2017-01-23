@@ -16,7 +16,11 @@
 <body>
 	<div class="zeroMargin">
 		<nav class="navbar navbar-default navbar-static-top" role="navigation">
-			<span class="navbar-brand" href="#">Weather Animator <span class="user">{% if user %}>> {{user.first_name+" "+user.last_name}}{% endif %}</span></span>
+			{% if user %}
+			<span class="navbar-brand"><a class="navbar-home-link" href="{{url_for('locations.index', id=user.id)}}">Weather Animator<span class="user"> >> {{user.first_name+" "+user.last_name}}</span></a></span>
+			{% else %}
+			<span class="navbar-brand"><a class="navbar-home-link" href="/">Weather Animator</a></span>
+			{% endif %}
 			<div class="container">
 				<div class="navbar-header">
 					{% block navItemsCollapsed %}
