@@ -9,6 +9,10 @@ Weather Animator is a weather app with several goals in mind. First was a simple
 * PixiJS
 * Boostrap
 * Flask
+* Celery
+* Python
+* Javascript
+* HTML/CSS
 
 ## APIs Used
 
@@ -20,4 +24,3 @@ Weather Animator is a weather app with several goals in mind. First was a simple
 ## Author
 
 Raymond Chow
-
