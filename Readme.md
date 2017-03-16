@@ -14,6 +14,7 @@ Weather Animator is a weather app with several goals in mind. First was a simple
 
 * OpenWeatherMap API
 * Google Maps Time Zone API
+* Twilio API
 
 
 ## Author
