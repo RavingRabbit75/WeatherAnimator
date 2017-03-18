@@ -1,303 +1,319 @@
+$apple-green: #aed200;
+$white: #fff;
+$black: #000;
+$navbar-bg-color: rgba(255, 255, 255, .3);
+
 body {
-	background-color: #AED200;
+  background-color: $apple-green;
 }
 
-.zeroMargin {
-	margin: 0px;
-	padding: 0px;
+.zero-margin {
+  margin: 0;
+  padding: 0;
 }
 
 
-.flushed-top{
-	position: absolute;
-	top: 0px;
-	right: 0px;
-    left: 0px;
+.flushed-top {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
 }
 
 #canvasContainer {
-	/*position: absolute;*/
+  // position: absolute;
 }
 
+// Navigation bar------------------
+.nav {
+  li {
+    display: inline;
+  }
+}
 
-/* Navigation bar------------------ */
-.nav li {
-	display: inline;
+.navbar {
+  background-color: $navbar-bg-color;
 }
-.navbar{
-	background-color: #FFFFFF;
-	background-color: rgba(255,255,255,0.3);
+
+.navbar-default {
+  .navbar-brand {
+    color: $white;
+  }
 }
-.navbar-default .navbar-brand {
-    color: #FFFFFF;
-}
+
 #navbar {
-    color: #FFFFFF;
+  color: $white;
 }
 
-.user{
-	font-size: 0.7em;
-	vertical-align:middle; 
+.user {
+  font-size: 0.7em;
+  vertical-align: middle;
 }
 
-.nav-btn:link{
-	text-decoration: none;
-	color: #000000;
+.nav-btn:link {
+  text-decoration: none;
+  color: #000000;
 }
+
 .nav-btn:visited{
-	text-decoration: none;
+  text-decoration: none;
 }
 
 .navbar-nav{
-	color: #FFFFFF;
+  color: #FFFFFF;
 }
 
-.navbar-home-link{
-	text-decoration: none;
-	color: #FFFFFF;
+.navbar-home-link {
+  text-decoration: none;
+  color: $white;
 }
-.navbar-home-link:hover{
-	text-decoration: none;
-	color: #000000;
+
+.navbar-home-link:hover {
+  text-decoration: none;
+  color: $black;
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-	color: black;  /*Sets the text hover color on navbar*/
+  color: black;  /*Sets the text hover color on navbar*/
 }
 
 
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:focus {
-	color: white;  /*Sets the text hover color on navbar*/
+  color: white;  /*Sets the text hover color on navbar*/
 }
 
 /*  Original Settings------------------ */
 .topButtons {
-	position: absolute;
-	right: 15px;
-	top: 10px;
-	z-index: 500;
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  z-index: 500;
 }
 
 
 .btnMargin {
-	margin-right: 10px;
+  margin-right: 10px;
 }
 
 .btnBottomMargin{
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .form-bottom-margin{
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 
 #search_public {
-	position: absolute;
-	top: 300px;
+  position: absolute;
+  top: 300px;
 }
 
 
 .view-box{
-	position: relative;
-	top:20px;
-	/*border-bottom: 1px solid #CCCCCC;*/
-	height: 50px;
+  position: relative;
+  top:20px;
+  /*border-bottom: 1px solid #CCCCCC;*/
+  height: 50px;
 }
 
 .index-loc-name{
-	font-family: sans-serif;
-	font-size: 20px
+  font-family: sans-serif;
+  font-size: 20px
 }
 
 .text-color {
-	color: #FFFFFF;
+  color: #FFFFFF;
 }
 
 .text-header{
-	font-size: 1.3em;
+  font-size: 1.3em;
 }
 
 
 /* this gets rid of a faint line that bootstrap causes*/
 .navbar-form, .navbar-left {
-	-webkit-box-shadow: none;
+  -webkit-box-shadow: none;
     -moz-box-shadow: none;
     -o-box-shadow: none;
     box-shadow: none;
 }
 
 .z-index-300{
-	position: relative;
-	z-index: 300
+  position: relative;
+  z-index: 300;
 }
 
 
 .flush-right {
-	text-align: right;
+  text-align: right;
 }
 
 .flush-left {
-	text-align: left;
+  text-align: left;
 }
 
 .down-350px{
-	position: relative;
-	top: 350px;
+  position: relative;
+  top: 350px;
 }
 
 .down-250px{
-	position: relative;
-	top: 250px;
+  position: relative;
+  top: 250px;
 }
 
 .down-100px{
-	position: relative;
-	top: 100px;
+  position: relative;
+  top: 100px;
 }
 
 /* weather_stats.html------------------ */
 
 .weather-stats {
-	position: relative;
-	top: 500px;
+  position: relative;
+  top: 500px;
 }
 
 #titleDividerLine{
-	margin-bottom: 20px
+  margin-bottom: 20px
 }
 
 
 .top-divider-line{
-	border-bottom: 1px solid #FFFFFF;
-	margin-bottom: 15px;
+  border-bottom: 1px solid #FFFFFF;
+  margin-bottom: 15px;
 }
 
 .divider-line{
-	border-bottom: 1px solid #FFFFFF;
+  border-bottom: 1px solid #FFFFFF;
 }
 
 .user-box{
-	margin-bottom: 15px
+  margin-bottom: 15px
 }
 
 .info-box {
-	border-bottom: 1px solid #FFFFFF;
-	height:60px;
+  border-bottom: 1px solid #FFFFFF;
+  height:60px;
 }
 
 .public_temp {
-	color: white;
-	font-size: 40px;
+  color: white;
+  font-size: 40px;
 }
 
 .public_condition{
-	color: white;
+  color: white;
 }
 
 #box{
-	height: 100px;
+  height: 100px;
 }
 
 .border {
-	border: 1px solid red;
+  border: 1px solid red;
 }
 
 .center {
-	text-align: center
+  text-align: center
 }
 
 .icon-scale{
-	width: 100px;
-	height: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 .white {
-	color: #FFFFFF;
+  color: #FFFFFF;
 }
 
 
 /*Single view location------------------*/
 
 .left-tiny-margin{
-	padding-left: 3px;
+  padding-left: 3px;
 }
 
 .right-tiny-margin{
-	padding-right: 3px;
+  padding-right: 3px;
 }
 
 
 #icon_large {
-	position: relative;
-	width: 180px;
-	height: 180px;
-	top: 80px;
-	/*border:1px solid red;*/
+  position: relative;
+  width: 180px;
+  height: 180px;
+  top: 80px;
+  /*border:1px solid red;*/
 }
 
 #view_locationTemp {
-	color: #FFFFFF;
-	position: relative;
-	top: 60px;
-	font-size: 60px;
-	text-shadow: 0 0 12px #777777;
+  color: #FFFFFF;
+  position: relative;
+  top: 60px;
+  font-size: 60px;
+  text-shadow: 0 0 12px #777777;
 }
 
 #view_locationName {
-	color: #FFFFFF;
-	position: relative;
-	top: 40px;
-	font-size: 25px;
-	text-shadow: 0 0 6px #777777;
+  color: #FFFFFF;
+  position: relative;
+  top: 40px;
+  font-size: 25px;
+  text-shadow: 0 0 6px #777777;
 }
 
 
-#weatherDetails{
-	position: relative;
-	top: 80px;
+#weatherDetails {
+  position: relative;
+  top: 80px;
 }
 
 #subDetails {
-	height:220px;
-	border-bottom: 1px solid white;
-}	
-
-.icon_small {
-	width: 30px;
-	height: 30px;
+  height:220px;
+  border-bottom: 1px solid white;
 }
 
-#forecast_section{
-	width: 300px;
-	margin: 0 auto; 
+.icon-small {
+  width: 30px;
+  height: 30px;
+}
+
+#forecast_section {
+  width: 300px;
+  margin: 0 auto;
 }
 
 .top-spacing-15px{
-	margin-top: 15px;
+  margin-top: 15px;
 }
+
 .bottom-spacing-15px{
-	margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 
-.forecast_col1{
-	display: inline-block;
-	width: 120px;
-	text-align: right;
+.forecast-col1 {
+  display: inline-block;
+  width: 120px;
+  text-align: right;
 }
-.forecast_col2{
-	display: inline-block;
-	width: 60px;
-	text-align: center;
+
+.forecast-col2 {
+  display: inline-block;
+  width: 60px;
+  text-align: center;
 }
-.forecast_col3{
-	display: inline-block;
-	width: 40px;
+
+.forecast-col3 {
+  display: inline-block;
+  width: 40px;
 }
-.forecast_col4{
-	display: inline-block;
-	width: 40px;
+
+.forecast-col4 {
+  display: inline-block;
+  width: 40px;
 }
 
 

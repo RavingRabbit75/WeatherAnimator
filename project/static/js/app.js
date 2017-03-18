@@ -38,7 +38,6 @@ onload=function(){
 	});
 
 
-
 	function getRandomFloat(min, max) {
 		return Math.random() * (max - min) + min;
 	}
@@ -83,7 +82,6 @@ onload=function(){
 
 	}
 
-
 	class RainEmitter {
 		constructor(amount){
 			this.amount=amount;
@@ -117,7 +115,7 @@ onload=function(){
 
 	class LightningEmitter {
 		constructor(timeOfDay){
-			var emitter = new PIXI.Container()
+			var emitter = new PIXI.Container();
 			var bolt1=new PIXI.Sprite.fromImage("/static/images/elements/lightning_01.png");
 			var bolt2=new PIXI.Sprite.fromImage("/static/images/elements/lightning_02.png");
 			if(timeOfDay==="night"){
