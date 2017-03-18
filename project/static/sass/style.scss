@@ -46,21 +46,21 @@ body {
 }
 
 .user {
-  font-size: 0.7em;
+  font-size: .7em;
   vertical-align: middle;
 }
 
 .nav-btn:link {
   text-decoration: none;
-  color: #000000;
+  color: $black;
 }
 
-.nav-btn:visited{
+.nav-btn:visited {
   text-decoration: none;
 }
 
-.navbar-nav{
-  color: #FFFFFF;
+.navbar-nav {
+  color: $white;
 }
 
 .navbar-home-link {
@@ -74,16 +74,16 @@ body {
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  color: black;  /*Sets the text hover color on navbar*/
+  color: $black;  // Sets the text hover color on navbar
 }
 
 
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:focus {
-  color: white;  /*Sets the text hover color on navbar*/
+  color: $white;  /*Sets the text hover color on navbar*/
 }
 
-/*  Original Settings------------------ */
-.topButtons {
+// Original Settings------------------
+.top-buttons {
   position: absolute;
   right: 15px;
   top: 10px;
@@ -91,15 +91,15 @@ body {
 }
 
 
-.btnMargin {
+.btn-margin {
   margin-right: 10px;
 }
 
-.btnBottomMargin{
+.btn-bottom-margin {
   margin-bottom: 10px;
 }
 
-.form-bottom-margin{
+.form-bottom-margin {
   margin-bottom: 10px;
 }
 
@@ -110,36 +110,36 @@ body {
 }
 
 
-.view-box{
+.view-box {
   position: relative;
-  top:20px;
+  top: 20px;
   /*border-bottom: 1px solid #CCCCCC;*/
   height: 50px;
 }
 
-.index-loc-name{
+.index-loc-name {
   font-family: sans-serif;
-  font-size: 20px
+  font-size: 20px;
 }
 
 .text-color {
-  color: #FFFFFF;
+  color: $white;
 }
 
-.text-header{
+.text-header {
   font-size: 1.3em;
 }
 
 
-/* this gets rid of a faint line that bootstrap causes*/
+// this gets rid of a faint line that bootstrap causes
 .navbar-form, .navbar-left {
   -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    -o-box-shadow: none;
-    box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
 }
 
-.z-index-300{
+.z-index-300 {
   position: relative;
   z-index: 300;
 }
@@ -153,61 +153,61 @@ body {
   text-align: left;
 }
 
-.down-350px{
+.down-350px {
   position: relative;
   top: 350px;
 }
 
-.down-250px{
+.down-250px {
   position: relative;
   top: 250px;
 }
 
-.down-100px{
+.down-100px {
   position: relative;
   top: 100px;
 }
 
-/* weather_stats.html------------------ */
+// weather_stats.html------------------
 
 .weather-stats {
   position: relative;
   top: 500px;
 }
 
-#titleDividerLine{
-  margin-bottom: 20px
+#titleDividerLine {
+  margin-bottom: 20px;
 }
 
 
-.top-divider-line{
-  border-bottom: 1px solid #FFFFFF;
+.top-divider-line {
+  border-bottom: 1px solid $white;
   margin-bottom: 15px;
 }
 
-.divider-line{
-  border-bottom: 1px solid #FFFFFF;
+.divider-line {
+  border-bottom: 1px solid $white;
 }
 
-.user-box{
-  margin-bottom: 15px
+.user-box {
+  margin-bottom: 15px;
 }
 
 .info-box {
-  border-bottom: 1px solid #FFFFFF;
-  height:60px;
+  border-bottom: 1px solid $white;
+  height: 60px;
 }
 
-.public_temp {
-  color: white;
+.public-temp {
+  color: $white;
   font-size: 40px;
 }
 
-.public_condition{
-  color: white;
+.public-condition {
+  color: $white;
 }
 
-#box{
+#box {
   height: 100px;
 }
 
@@ -216,10 +216,10 @@ body {
 }
 
 .center {
-  text-align: center
+  text-align: center;
 }
 
-.icon-scale{
+.icon-scale {
   width: 100px;
   height: 100px;
 }
@@ -229,13 +229,13 @@ body {
 }
 
 
-/*Single view location------------------*/
+// Single view location------------------
 
-.left-tiny-margin{
+.left-tiny-margin {
   padding-left: 3px;
 }
 
-.right-tiny-margin{
+.right-tiny-margin {
   padding-right: 3px;
 }
 
@@ -245,7 +245,6 @@ body {
   width: 180px;
   height: 180px;
   top: 80px;
-  /*border:1px solid red;*/
 }
 
 #view_locationTemp {
@@ -272,7 +271,7 @@ body {
 
 #subDetails {
   height:220px;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid $white;
 }
 
 .icon-small {
@@ -285,11 +284,11 @@ body {
   margin: 0 auto;
 }
 
-.top-spacing-15px{
+.top-spacing-15px {
   margin-top: 15px;
 }
 
-.bottom-spacing-15px{
+.bottom-spacing-15px {
   margin-bottom: 15px;
 }
 

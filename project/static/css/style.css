@@ -31,13 +31,13 @@ body {
 }
 
 .user {
-    font-size: 0.7em;
+    font-size: .7em;
     vertical-align: middle;
 }
 
 .nav-btn:link {
     text-decoration: none;
-    color: #000000;
+    color: #000;
 }
 
 .nav-btn:visited {
@@ -45,7 +45,7 @@ body {
 }
 
 .navbar-nav {
-    color: #FFFFFF;
+    color: #fff;
 }
 
 .navbar-home-link {
@@ -59,28 +59,26 @@ body {
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    color: black;
-  /*Sets the text hover color on navbar*/
+    color: #000;
 }
 
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:focus {
-    color: white;
+    color: #fff;
   /*Sets the text hover color on navbar*/
 }
 
-/*  Original Settings------------------ */
-.topButtons {
+.top-buttons {
     position: absolute;
     right: 15px;
     top: 10px;
     z-index: 500;
 }
 
-.btnMargin {
+.btn-margin {
     margin-right: 10px;
 }
 
-.btnBottomMargin {
+.btn-bottom-margin {
     margin-bottom: 10px;
 }
 
@@ -106,14 +104,13 @@ body {
 }
 
 .text-color {
-    color: #FFFFFF;
+    color: #fff;
 }
 
 .text-header {
     font-size: 1.3em;
 }
 
-/* this gets rid of a faint line that bootstrap causes*/
 .navbar-form, .navbar-left {
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
@@ -149,7 +146,6 @@ body {
     top: 100px;
 }
 
-/* weather_stats.html------------------ */
 .weather-stats {
     position: relative;
     top: 500px;
@@ -160,12 +156,12 @@ body {
 }
 
 .top-divider-line {
-    border-bottom: 1px solid #FFFFFF;
+    border-bottom: 1px solid #fff;
     margin-bottom: 15px;
 }
 
 .divider-line {
-    border-bottom: 1px solid #FFFFFF;
+    border-bottom: 1px solid #fff;
 }
 
 .user-box {
@@ -173,17 +169,17 @@ body {
 }
 
 .info-box {
-    border-bottom: 1px solid #FFFFFF;
+    border-bottom: 1px solid #fff;
     height: 60px;
 }
 
-.public_temp {
-    color: white;
+.public-temp {
+    color: #fff;
     font-size: 40px;
 }
 
-.public_condition {
-    color: white;
+.public-condition {
+    color: #fff;
 }
 
 #box {
@@ -207,7 +203,6 @@ body {
     color: #FFFFFF;
 }
 
-/*Single view location------------------*/
 .left-tiny-margin {
     padding-left: 3px;
 }
@@ -221,7 +216,6 @@ body {
     width: 180px;
     height: 180px;
     top: 80px;
-  /*border:1px solid red;*/
 }
 
 #view_locationTemp {
@@ -247,7 +241,7 @@ body {
 
 #subDetails {
     height: 220px;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid #fff;
 }
 
 .icon-small {
