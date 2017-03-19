@@ -21,19 +21,19 @@
 
 {% block content %}
 <div id="mainContainer" class="zeroMargin">
-	<div id="canvasContainer" class="background">
+	<div id="canvas-container" class="background">
 		
 	</div>
 	<div class="container-fluid z-index-300">
 		<div class="col-xs-12 center">
-			<img src="{{icon_bitmap}}" id="icon_large" alt="">
-			<p id="view_locationTemp">{{current_temp}}</p>
-			<p id="view_locationName">{{current.name}}</p>
+			<img src="{{icon_bitmap}}" id="icon-large" alt="">
+			<p id="view-location-temp">{{current_temp}}</p>
+			<p id="view-location-name">{{current.name}}</p>
 		</div>
 	</div>
-	<div id="weatherDetails" class="container-fluid">
+	<div id="weather-details" class="container-fluid">
 		<div class="top-divider-line"></div>
-		<div id="subDetails" class="white">
+		<div id="sub-details" class="white">
 			<div class="col-xs-6 flush-right right-tiny-margin">
 				<p>Current Conditions:<br/>
 				<br/>
@@ -60,7 +60,7 @@
 			</div>
 		</div>
 		<div class="white">
-			<div id="forecast_section">
+			<div id="forecast-section">
 				<div class="flush-left top-spacing-15px">
 					<span class="forecast-col1">{{day1}}</span>
 					<span class="forecast-col2"><img src="{{day1_icon}}" class="icon-small" alt=""></span>

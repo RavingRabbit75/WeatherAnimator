@@ -26,6 +26,7 @@ body {
   // position: absolute;
 }
 
+
 // Navigation bar------------------
 .nav {
   li {
@@ -190,7 +191,7 @@ body {
   top: 500px;
 }
 
-#titleDividerLine {
+#title-divider-line {
   margin-bottom: 20px;
 }
 
@@ -255,14 +256,14 @@ body {
 }
 
 
-#icon_large {
+#icon-large {
   position: relative;
   width: 180px;
   height: 180px;
   top: 80px;
 }
 
-#view_locationTemp {
+#view-location-temp {
   color: $white;
   position: relative;
   top: 60px;
@@ -270,7 +271,7 @@ body {
   text-shadow: 0 0 12px $grey;
 }
 
-#view_locationName {
+#view-location-name {
   color: $white;
   position: relative;
   top: 40px;
@@ -279,12 +280,12 @@ body {
 }
 
 
-#weatherDetails {
+#weather-details {
   position: relative;
   top: 80px;
 }
 
-#subDetails {
+#sub-details {
   height: 220px;
   border-bottom: 1px solid $white;
 }
@@ -294,7 +295,7 @@ body {
   height: 30px;
 }
 
-#forecast_section {
+#forecast-section {
   width: 300px;
   margin: 0 auto;
 }

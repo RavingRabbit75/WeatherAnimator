@@ -2,7 +2,7 @@ onload=function(){
 
 	var renderer = PIXI.autoDetectRenderer(1000,400, {transparent: false, resolution: 1.0, antialias:false});
 
-	document.getElementById("canvasContainer").appendChild(renderer.view);
+	document.getElementById("canvas-container").appendChild(renderer.view);
 
 	renderer.view.style.position = "absolute";
 	renderer.view.style.display = "block";
