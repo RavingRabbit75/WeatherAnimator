@@ -1,6 +1,8 @@
 $apple-green: #aed200;
 $white: #fff;
 $black: #000;
+$red: #f00;
+$grey: #777;
 $navbar-bg-color: rgba(255, 255, 255, .3);
 
 body {
@@ -20,7 +22,7 @@ body {
   right: 0;
 }
 
-#canvasContainer {
+#canvas-container {
   // position: absolute;
 }
 
@@ -35,11 +37,6 @@ body {
   background-color: $navbar-bg-color;
 }
 
-.navbar-default {
-  .navbar-brand {
-    color: $white;
-  }
-}
 
 #navbar {
   color: $white;
@@ -50,36 +47,55 @@ body {
   vertical-align: middle;
 }
 
-.nav-btn:link {
-  text-decoration: none;
-  color: $black;
+
+.nav-btn {
+  &:link {
+    text-decoration: none;
+    color: $black;
+  }
+
+  &:visited {
+    text-decoration: none;
+  }
+  
 }
 
-.nav-btn:visited {
-  text-decoration: none;
-}
 
 .navbar-nav {
   color: $white;
 }
 
+
 .navbar-home-link {
   text-decoration: none;
   color: $white;
-}
 
-.navbar-home-link:hover {
-  text-decoration: none;
-  color: $black;
-}
+  &:hover {
+    text-decoration: none;
+    color: $black;
+  }
 
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  color: $black;  // Sets the text hover color on navbar
 }
 
 
-.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:focus {
-  color: $white;  /*Sets the text hover color on navbar*/
+.navbar-default {
+
+  .navbar-brand {
+    color: $white;
+  }
+
+  .navbar-nav > li > a {
+    color: $white;
+
+    &:hover {
+      color: $black;
+    }
+
+    &:focus {
+      color: $black;
+    }
+  }
+
 }
 
 // Original Settings------------------
@@ -104,7 +120,7 @@ body {
 }
 
 
-#search_public {
+#search-public {
   position: absolute;
   top: 300px;
 }
@@ -113,7 +129,6 @@ body {
 .view-box {
   position: relative;
   top: 20px;
-  /*border-bottom: 1px solid #CCCCCC;*/
   height: 50px;
 }
 
@@ -212,7 +227,7 @@ body {
 }
 
 .border {
-  border: 1px solid red;
+  border: 1px solid $red;
 }
 
 .center {
@@ -225,7 +240,7 @@ body {
 }
 
 .white {
-  color: #FFFFFF;
+  color: $white;
 }
 
 
@@ -248,19 +263,19 @@ body {
 }
 
 #view_locationTemp {
-  color: #FFFFFF;
+  color: $white;
   position: relative;
   top: 60px;
   font-size: 60px;
-  text-shadow: 0 0 12px #777777;
+  text-shadow: 0 0 12px $grey;
 }
 
 #view_locationName {
-  color: #FFFFFF;
+  color: $white;
   position: relative;
   top: 40px;
   font-size: 25px;
-  text-shadow: 0 0 6px #777777;
+  text-shadow: 0 0 6px $grey;
 }
 
 
@@ -270,7 +285,7 @@ body {
 }
 
 #subDetails {
-  height:220px;
+  height: 220px;
   border-bottom: 1px solid $white;
 }
 
@@ -314,6 +329,3 @@ body {
   display: inline-block;
   width: 40px;
 }
-
-
-
