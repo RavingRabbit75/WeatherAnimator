@@ -1,0 +1,71 @@
+// Navigation bar------------------
+.nav {
+  li {
+    display: inline;
+  }
+}
+
+.navbar {
+  background-color: $navbar-bg-color;
+}
+
+
+#navbar {
+  color: $white;
+}
+
+.user {
+  font-size: .7em;
+  vertical-align: middle;
+}
+
+
+.nav-btn {
+  &:link {
+    text-decoration: none;
+    color: $black;
+  }
+
+  &:visited {
+    text-decoration: none;
+  }
+  
+}
+
+
+.navbar-nav {
+  color: $white;
+}
+
+
+.navbar-home-link {
+  text-decoration: none;
+  color: $white;
+
+  &:hover {
+    text-decoration: none;
+    color: $black;
+  }
+
+}
+
+
+.navbar-default {
+
+  .navbar-brand {
+    color: $white;
+  }
+
+  .navbar-nav > li > a {
+    color: $white;
+
+    &:hover {
+      color: $black;
+    }
+
+    &:focus {
+      color: $black;
+    }
+  }
+
+}

@@ -5,7 +5,7 @@ var sass = require("gulp-sass");
 var cssbeautify = require("gulp-cssbeautify");
 
 gulp.task("sass", function() {
-	return gulp.src("./project/static/sass/*.scss")
+	return gulp.src("./project/static/sass/style.scss")
 	.pipe(sass())
 	.pipe(cssbeautify())
 	.pipe(gulp.dest("./project/static/css"));

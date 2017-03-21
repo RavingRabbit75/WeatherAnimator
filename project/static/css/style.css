@@ -14,62 +14,6 @@ body {
     right: 0;
 }
 
-.nav li {
-    display: inline;
-}
-
-.navbar {
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-#navbar {
-    color: #fff;
-}
-
-.user {
-    font-size: .7em;
-    vertical-align: middle;
-}
-
-.nav-btn:link {
-    text-decoration: none;
-    color: #000;
-}
-
-.nav-btn:visited {
-    text-decoration: none;
-}
-
-.navbar-nav {
-    color: #fff;
-}
-
-.navbar-home-link {
-    text-decoration: none;
-    color: #fff;
-}
-
-.navbar-home-link:hover {
-    text-decoration: none;
-    color: #000;
-}
-
-.navbar-default .navbar-brand {
-    color: #fff;
-}
-
-.navbar-default .navbar-nav > li > a {
-    color: #fff;
-}
-
-.navbar-default .navbar-nav > li > a:hover {
-    color: #000;
-}
-
-.navbar-default .navbar-nav > li > a:focus {
-    color: #000;
-}
-
 .top-buttons {
     position: absolute;
     right: 15px;
@@ -146,6 +90,62 @@ body {
 .down-100px {
     position: relative;
     top: 100px;
+}
+
+.nav li {
+    display: inline;
+}
+
+.navbar {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#navbar {
+    color: #fff;
+}
+
+.user {
+    font-size: .7em;
+    vertical-align: middle;
+}
+
+.nav-btn:link {
+    text-decoration: none;
+    color: #000;
+}
+
+.nav-btn:visited {
+    text-decoration: none;
+}
+
+.navbar-nav {
+    color: #fff;
+}
+
+.navbar-home-link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.navbar-home-link:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+.navbar-default .navbar-brand {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    color: #000;
+}
+
+.navbar-default .navbar-nav > li > a:focus {
+    color: #000;
 }
 
 .weather-stats {

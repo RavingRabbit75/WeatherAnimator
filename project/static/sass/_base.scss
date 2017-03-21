@@ -1,0 +1,107 @@
+body {
+  background-color: $apple-green;
+}
+
+.zero-margin {
+  margin: 0;
+  padding: 0;
+}
+
+
+.flushed-top {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+}
+
+#canvas-container {
+  // position: absolute;
+}
+
+
+
+// Original Settings------------------
+.top-buttons {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  z-index: 500;
+}
+
+
+.btn-margin {
+  margin-right: 10px;
+}
+
+.btn-bottom-margin {
+  margin-bottom: 10px;
+}
+
+.form-bottom-margin {
+  margin-bottom: 10px;
+}
+
+
+#search-public {
+  position: absolute;
+  top: 300px;
+}
+
+
+.view-box {
+  position: relative;
+  top: 20px;
+  height: 50px;
+}
+
+.index-loc-name {
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+.text-color {
+  color: $white;
+}
+
+.text-header {
+  font-size: 1.3em;
+}
+
+
+// this gets rid of a faint line that bootstrap causes
+.navbar-form, .navbar-left {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+}
+
+.z-index-300 {
+  position: relative;
+  z-index: 300;
+}
+
+
+.flush-right {
+  text-align: right;
+}
+
+.flush-left {
+  text-align: left;
+}
+
+.down-350px {
+  position: relative;
+  top: 350px;
+}
+
+.down-250px {
+  position: relative;
+  top: 250px;
+}
+
+.down-100px {
+  position: relative;
+  top: 100px;
+}
